@@ -1,9 +1,10 @@
 var express = require('express');
 var consign = require('consign');
 var bodyParser = require('body-parser');
-var expressValidator = require('express-validator');
 var morgan = require('morgan');
-var logger = require('../servicos/logger.js');
+var logger = require('../logger/logger.js');
+
+const  { check, validationResult }  = require('express-validator');
 
 module.exports = function () {
   var app = express();
@@ -15,7 +16,7 @@ module.exports = function () {
       }
     }
   }));
-  
+
   // Add headers
   app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -29,7 +30,7 @@ module.exports = function () {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
- app.use(expressValidator());
+ app.use(check());
 
   consign()
     .then('persistencia')
