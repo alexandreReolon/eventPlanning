@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Styles';
 import TextInput from '../../components/textInput/TextInput'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import { View, Text, Button, Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
 
 
 export default function Login() {
@@ -35,10 +35,6 @@ export default function Login() {
                     autoCapitalize={'none'}
                     autoCorrect={false}
                 />
-
-                <Hypertext>
-                    {'<a href="http://www.w3.org/WhatIs.html">Hypertext</a> is text which contains <a href="http://www.w3.org/Terms.html#link">links</a> to other texts.'}
-                </Hypertext>
             </View>
 
         </View>

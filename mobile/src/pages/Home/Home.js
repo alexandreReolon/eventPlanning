@@ -13,12 +13,12 @@ export default function Home() {
                 <Text style={styles.headerText}>
                 </Text>
             </View>
+
             <TouchableOpacity onPress={navigateBack}>
                 <Feather name="arrow-left" size={28} color="#E82041" />
             </TouchableOpacity>
+
             <Text style={styles.title}>Informa seu dados abaixo para se cadastrar</Text>
-
-
         </View>
     );
 
