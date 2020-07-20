@@ -3,13 +3,17 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#042454',
         padding: 10,
-        justifyContent: 'center'
     },
 
     form: {
         margin: 30,
-        backgroundColor: '#FFFFFF'
+        justifyContent: 'center'
+    },
+
+    text: {
+        marginTop: '30%',
+        marginBottom: '20%'
     }
 });

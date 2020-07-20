@@ -1,15 +1,20 @@
+import { View } from 'react-native';
 import React from 'react';
 import styles from './Styles';
-import TextInput from '../../components/textInput/TextInput'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import { View, Dimensions } from 'react-native';
-
+import TextInput from '../../components/textInput/TextInput';
+import Text from '../../components/text/Text';
+import Button from '../../components/button/Button';
 
 export default function Login() {
-    const WIDTH = Dimensions.get('screen').width;
-
     return (
         <View style={styles.container}>
+            <View style={styles.text}>
+                <Text text="Olá!" />
+                <Text text="Seja bem vindo ao" />
+                <Text text="Event Planning" />
+            </View>
+
 
             <View style={styles.form}>
                 <TextInput
@@ -34,6 +39,14 @@ export default function Login() {
                     borderHeight={2}
                     autoCapitalize={'none'}
                     autoCorrect={false}
+                />
+
+                <Button
+                    title="ENTRAR" width='200'
+                />
+
+                <Button
+                    title="REGISTRAR-SE"
                 />
             </View>
 
