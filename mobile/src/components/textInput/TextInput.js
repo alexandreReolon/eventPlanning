@@ -101,6 +101,8 @@ export default class TextInput extends BaseInput {
                         </Animated.Text>
                     </Animated.View>
                 </TouchableWithoutFeedback>
+
+
                 <TextInputComponent
                     ref={this.input}
                     {...this.props}
@@ -125,7 +127,9 @@ export default class TextInput extends BaseInput {
                         color={iconColor}
                         style={{
                             position: 'absolute',
-                            bottom: 0,
+                            fontSize: 20,
+                            bottom: 3,
+                            backgroundColor: 'transparent',
                             right: focusedAnim.interpolate({
                                 inputRange: [0, 1],
                                 outputRange: [0, width + inputPadding],
@@ -138,23 +142,18 @@ export default class TextInput extends BaseInput {
                                     }),
                                 },
                             ],
-                            fontSize: 20,
-                            backgroundColor: 'transparent',
                         }}
                     />
                 </TouchableWithoutFeedback>
-                {/* bottom border */}
+
                 <Animated.View
                     style={{
                         position: 'absolute',
                         bottom: 0,
                         right: 0,
                         height: borderHeight,
-                        width: focusedAnim.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: [0, width],
-                        }),
                         backgroundColor: iconColor,
+                        width: width,
                     }}
                 />
             </View>

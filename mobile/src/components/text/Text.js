@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import { Text as TextComponent, View } from 'react-native';
+import { Text as TextComponent } from 'react-native';
 import styles from './Styles';
 
 export default class Text extends Component {
     render() {
-        const { text } = this.props;
+        const { text, size = 20 } = this.props;
 
         return (
-            <TextComponent style={styles.text}>{text}</TextComponent>
+            <TextComponent
+                style={{
+                    ...
+                    styles.text,
+                    fontSize: size,
+                }}
+            >
+                {text}
+            </TextComponent >
         )
     }
 

@@ -15,5 +15,17 @@ export default StyleSheet.create({
     text: {
         marginTop: '30%',
         marginBottom: '20%'
+    },
+    center: {
+        alignItems: 'center'
+    },
+
+    toggle: {
+        bottom: 23,
+        position: 'relative',
+    },
+
+    margin: {
+        marginTop: 10
     }
 });

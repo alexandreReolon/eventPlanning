@@ -4,38 +4,39 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var logger = require('../logger/logger.js');
 
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
+
 const  { check, validationResult }  = require('express-validator');
 
 module.exports = function () {
-  var app = express();
+  const credentials = {
+      key: fs.readFileSync('./config/key.pem'),
+      cert: fs.readFileSync('./config/cert.pem'),
+      ca:fs.readFileSync('./config/ca.pem'),
+      rejectUnauthorized: false ,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+    		"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+	}
+  };
 
-  app.use(morgan("common", {
-    stream: {
-      write: function (mensagem) {
-        logger.info(mensagem);
-      }
-    }
-  }));
+  const app = express();
 
-  // Add headers
-  app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+  app.get('/usuarioService/efetuarLogin/', (req, res) => {
+   res.send('Nhaiosdjh..');
+   console.log("server starting on port : " + 8443);
+});
+
+  var httpServer = http.createServer(app);
+  var httpsServer = https.createServer(credentials, app);
+
+  httpServer.listen(8080);
+
+  httpsServer.listen(8443, () => {
+    console.log("server starting on port : " + 8443)
   });
-
-  //Define a porta da applicação
-  app.set('port', (8080));
-
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(bodyParser.json());
-
- app.use(check());
-
-  consign()
-    .then('persistencia')
-    .then('servicos')
-    .into(app);
 
   return app;
 }

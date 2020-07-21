@@ -1,10 +1,11 @@
-import { View } from 'react-native';
+import { View, Switch } from 'react-native';
 import React from 'react';
 import styles from './Styles';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import TextInput from '../../components/textInput/TextInput';
 import Text from '../../components/text/Text';
 import Button from '../../components/button/Button';
+import Service from '../../Service'
 
 export default function Login() {
     return (
@@ -41,15 +42,35 @@ export default function Login() {
                     autoCorrect={false}
                 />
 
-                <Button
-                    title="ENTRAR" width='200'
-                />
+                <View style={styles.margin}>
+                    <Text size={15} text="Permanecer conectado" />
 
-                <Button
-                    title="REGISTRAR-SE"
-                />
+                    <Switch style={styles.toggle}
+                        trackColor={{ false: "#767577", true: "#81b0ff" }}
+                        ios_backgroundColor="#3e3e3e"
+                    />
+
+                    <Text size={15} text="Esqueceu sua senha?" />
+                </View>
+
+                <View style={styles.center}>
+                    <Button title="ENTRAR" onPress={validarLogin} />
+                    <Button title="REGISTRAR-SE" />
+                </View>
             </View>
-
         </View>
     );
+
+    function validarLogin() {
+
+        const failed = function name(params) {
+            console.log("failed" + params);
+        }
+
+        const sucess = function name(params) {
+            console.log("sucess" + params);
+        }
+
+        Service('usuarioService/efetuarLogin', 'get', sucess, failed);
+    }
 }

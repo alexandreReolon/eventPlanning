@@ -6,7 +6,7 @@ module.exports = function (app) {
     const pedidoDAO = app.persistencia.PedidoDAO(connection);
 
 
-    app.get('/pedidoService/listagem/', function (req, res) {
+    app.get('/usuarioService/efetuarLogin/', function (req, res) {
         console.log("Executando o método => Listagem. ");
 
         pedidoDAO.lista(function (erro, resultado) {
