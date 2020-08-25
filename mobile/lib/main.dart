@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/constants.dart';
 import 'package:flutter_app/pages/login.dart';
+import 'package:flutter_app/service.dart' as Service;
 
 void main() {
   runApp(MyApp());
@@ -66,6 +67,9 @@ class WelcomeScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
+                          print("A");
+                          Service.get('teste', null);
+
                           return LoginPage();
                         },
                       ));
