@@ -1,0 +1,23 @@
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info","service":"user-service"}
+{"message":"::1 - - [30/Aug/2020:01:12:58 +0000] \"GET /usuarioService/efetuarLogin HTTP/1.1\" 304 -\n","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info","service":"user-service"}
+{"code":"ER_PARSE_ERROR","errno":1064,"sqlMessage":"You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1","sqlState":"42000","index":0,"sql":"CREATE TABLE IF NOT EXISTS tb_usuario (id_usuario int  NOT NULL AUTO_INCREMENT,tx_nome varchar(255) NOT NULL,tx_email varchar(255) NOT NULL UNIQUE,tx_senha varchar(50) NOT NULL,dt_cadastro timestamp NOT NULL  DEFAULT CURRENT_TIMESTAMP,CONSTRAINT PRIMARY KEY (id_usuario) ","level":"error","service":"user-service"}
+{"message":"Verificando alterações em base","level":"info","service":"user-service"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info","service":"user-service"}
