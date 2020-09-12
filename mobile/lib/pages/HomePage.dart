@@ -6,7 +6,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ,
+      backgroundColor: BACKGROUND_COLOR,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(20),

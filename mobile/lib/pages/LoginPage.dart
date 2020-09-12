@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/animations/FadeAnimation.dart';
 import 'package:flutter_app/constants.dart';
+import 'package:flutter_app/pages/cadastrarPage/CadastrarPage.dart';
 import 'package:flutter_app/pages/HomePage.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -99,8 +100,47 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            FadeAnimation(
+              2,
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    this.clickButtonCadastrar(context);
+                  },
+                  child: Container(
+                    width: 120,
+                    padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: TERTIARY_COLOR[800],
+                    ),
+                    child: Center(
+                      child: Text(
+                        "CADASTRAR",
+                        style: TextStyle(
+                          color: PRIMARY_COLOR.withOpacity(.7),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  clickButtonCadastrar(context) {
+    Navigator.push(
+      context,
+      PageTransition(
+        type: PageTransitionType.fade,
+        child: CadastrarPage(),
       ),
     );
   }
