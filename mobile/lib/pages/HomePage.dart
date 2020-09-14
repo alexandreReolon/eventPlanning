@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Constants.dart';
 import 'package:flutter_app/animations/FadeAnimation.dart';
+import 'package:flutter_app/components/menu.dart';
 
 class HomePage extends StatelessWidget {
+  var drawer = MyHomePage();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: BACKGROUND_COLOR,
+      appBar: AppBar(),
+      backgroundColor: Colors.black,
+      drawer: drawer,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(20),
@@ -18,31 +22,48 @@ class HomePage extends StatelessWidget {
               ),
               FadeAnimation(
                 1.2,
-                makeItem(image: 'assets/images/beacon.png', date: 17),
+                makeItem(
+                    image: 'assets/images/beacon.png',
+                    title: 'Semana academica',
+                    mes: 'setembro',
+                    date: 17,
+                    hour: '19:00'),
               ),
               SizedBox(
                 height: 20,
               ),
               FadeAnimation(
                 1.3,
-                makeItem(image: 'assets/images/beacon.png', date: 18),
+                makeItem(
+                    image: 'assets/images/beacon.png',
+                    title: 'Semana academica',
+                    mes: 'setembro',
+                    date: 17,
+                    hour: '19:00'),
               ),
               SizedBox(
                 height: 20,
               ),
               FadeAnimation(
                 1.4,
-                makeItem(image: 'assets/images/beacon.png', date: 19),
+                makeItem(
+                    image: 'assets/images/beacon.png',
+                    title: 'Semana academica',
+                    mes: 'setembro',
+                    date: 17,
+                    hour: '19:00'),
               ),
               SizedBox(
                 height: 20,
               ),
               FadeAnimation(
                 1.5,
-                makeItem(image: 'assets/images/beacon.png', date: 20),
-              ),
-              SizedBox(
-                height: 20,
+                makeItem(
+                    image: 'assets/images/beacon.png',
+                    title: 'Semana academica',
+                    mes: 'setembro',
+                    date: 17,
+                    hour: '19:00'),
               ),
             ],
           ),
@@ -51,7 +72,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget makeItem({image, date}) {
+  Widget makeItem({image, title, mes, date, hour}) {
     return Row(
       children: <Widget>[
         Container(
@@ -68,7 +89,7 @@ class HomePage extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
               Text(
-                "SEP",
+                mes.toString(),
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               )
             ],
@@ -78,9 +99,10 @@ class HomePage extends StatelessWidget {
           child: Container(
             height: 200,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                    image: AssetImage(image), fit: BoxFit.cover)),
+              borderRadius: BorderRadius.circular(20),
+              // image: DecorationImage(
+              //     image: AssetImage(image), fit: BoxFit.cover),
+            ),
             child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -94,7 +116,7 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Text(
-                    "Bumbershoot 2019",
+                    title.toString(),
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
@@ -113,7 +135,7 @@ class HomePage extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        "19:00 PM",
+                        hour.toString(),
                         style: TextStyle(color: Colors.white),
                       )
                     ],

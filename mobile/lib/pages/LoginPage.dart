@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/animations/FadeAnimation.dart';
 import 'package:flutter_app/constants.dart';
-import 'package:flutter_app/pages/cadastrarPage/CadastrarPage.dart';
+import 'package:flutter_app/pages/CadastrarPage.dart';
 import 'package:flutter_app/pages/HomePage.dart';
 import 'package:page_transition/page_transition.dart';
 

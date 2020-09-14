@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /**
- * THEMA 
+ * THEME
  */
 const BACKGROUND_COLOR = Color.fromRGBO(3, 9, 23, 1);
 const PRIMARY_COLOR = Color.fromRGBO(255, 255, 255, 1);
