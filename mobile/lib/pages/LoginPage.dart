@@ -9,7 +9,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: BACKGROUND_COLOR,
+      backgroundColor: SECUNDARY_COLOR,
       body: Container(
         padding: EdgeInsets.all(30),
         child: Column(
@@ -41,7 +41,7 @@ class LoginPage extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         border: Border(
-                          bottom: BorderSide(color: SECUNDARY_COLOR[300]),
+                          bottom: BorderSide(color: SECUNDARY_COLOR),
                         ),
                       ),
                       child: TextField(
@@ -86,7 +86,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.all(15),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color: TERTIARY_COLOR[800],
+                      color: TERTIARY_COLOR,
                     ),
                     child: Center(
                       child: Text(
@@ -115,7 +115,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.all(15),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color: TERTIARY_COLOR[800],
+                      color: TERTIARY_COLOR,
                     ),
                     child: Center(
                       child: Text(

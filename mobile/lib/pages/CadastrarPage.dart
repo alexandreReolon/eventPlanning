@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Constants.dart';
 import 'package:flutter_app/animations/FadeAnimation.dart';
 import 'package:flutter_app/Service.dart' as Service;
-import 'package:flutter_app/pages/LoginPage.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:string_validator/string_validator.dart';
 
 class CadastrarPage extends StatefulWidget {
@@ -13,18 +11,17 @@ class CadastrarPage extends StatefulWidget {
 }
 
 class _HomeState extends State<CadastrarPage> {
-  final cadastrar_page_key = GlobalKey<FormState>();
-
-  TextEditingController name_input = TextEditingController();
-  TextEditingController password_input = TextEditingController();
-  TextEditingController email_input = TextEditingController();
+  final cadastrarPageKey = GlobalKey<FormState>();
+  final TextEditingController nameInput = TextEditingController();
+  final TextEditingController passwordInput = TextEditingController();
+  final TextEditingController emailInput = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: BACKGROUND_COLOR,
+      backgroundColor: SECUNDARY_COLOR,
       body: Form(
-        key: cadastrar_page_key,
+        key: cadastrarPageKey,
         child: SingleChildScrollView(
           padding: EdgeInsets.all(30),
           child: Column(
@@ -49,48 +46,44 @@ class _HomeState extends State<CadastrarPage> {
                 Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: PRIMARY_COLOR),
+                    borderRadius: BorderRadius.circular(10),
+                    color: PRIMARY_COLOR,
+                  ),
                   child: Column(
                     children: <Widget>[
                       Container(
                         decoration: BoxDecoration(
                           border: Border(
-                            bottom: BorderSide(color: SECUNDARY_COLOR[300]),
+                            bottom: BorderSide(
+                              color: SECUNDARY_COLOR,
+                            ),
                           ),
                         ),
                         child: TextFormField(
                           validator: (value) {
-                            if (value.isEmpty) {
-                              return 'AVISO';
-                            }
+                            return validador(value, false);
                           },
-                          controller: name_input,
+                          controller: nameInput,
                           decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintStyle: TextStyle(
-                                color: SECUNDARY_COLOR.withOpacity(.8),
-                              ),
-                              hintText: "Digite seu nome"),
+                            hintText: "Digite seu nome",
+                            border: InputBorder.none,
+                            hintStyle: TextStyle(
+                              color: SECUNDARY_COLOR.withOpacity(.8),
+                            ),
+                          ),
                         ),
                       ),
                       Container(
                         decoration: BoxDecoration(
                           border: Border(
-                            bottom: BorderSide(color: SECUNDARY_COLOR[300]),
+                            bottom: BorderSide(color: SECUNDARY_COLOR),
                           ),
                         ),
                         child: TextFormField(
                           validator: (value) {
-                            if (value.isEmpty) {
-                              return 'AVISO';
-                            }
-
-                            if (!isEmail(value)) {
-                              return 'INFORME UM EMAIL VÁLIDO';
-                            }
+                            return validador(value, true);
                           },
-                          controller: email_input,
+                          controller: emailInput,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintStyle: TextStyle(
@@ -102,18 +95,16 @@ class _HomeState extends State<CadastrarPage> {
                       Container(
                         decoration: BoxDecoration(),
                         child: TextFormField(
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'AVISO';
-                            }
-                          },
-                          controller: password_input,
+                          controller: passwordInput,
                           decoration: InputDecoration(
-                              border: InputBorder.none,
                               hintStyle: TextStyle(
                                 color: Colors.grey.withOpacity(.8),
                               ),
+                              border: InputBorder.none,
                               hintText: "Digite sua senha"),
+                          validator: (value) {
+                            return validador(value, false);
+                          },
                         ),
                       ),
                     ],
@@ -135,7 +126,7 @@ class _HomeState extends State<CadastrarPage> {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: TERTIARY_COLOR[800],
+                        color: TERTIARY_COLOR,
                       ),
                       child: Center(
                         child: Text(
@@ -157,11 +148,11 @@ class _HomeState extends State<CadastrarPage> {
   }
 
   clickButtonCadastro() {
-    if (cadastrar_page_key.currentState.validate()) {
+    if (cadastrarPageKey.currentState.validate()) {
       var parametros = {
-        'name': name_input.text.toString(),
-        'email': email_input.text.toString(),
-        'password': password_input.text.toString()
+        'name': nameInput.text.toString(),
+        'email': emailInput.text.toString(),
+        'password': passwordInput.text.toString()
       };
 
       var response =
@@ -173,6 +164,16 @@ class _HomeState extends State<CadastrarPage> {
 
       //Volta a tela de login
       Navigator.pop(context);
+    }
+  }
+
+  validador(value, email) {
+    if (isNull(value) || value.isEmpty) {
+      return 'AVISO CAMPO NÃO PODE SER VAZIO';
+    }
+
+    if (email && (isEmail(value))) {
+      return "INFORME UM EMAIL VÁLIDO";
     }
   }
 }
