@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Constants.dart';
-import 'package:flutter_app/animations/FadeAnimation.dart';
-import 'package:flutter_app/Service.dart' as Service;
+import 'package:eventPlanning/Constants.dart';
+import 'package:eventPlanning/animations/FadeAnimation.dart';
+import 'package:eventPlanning/Service.dart' as Service;
 import 'package:string_validator/string_validator.dart';
 
 class CadastrarPage extends StatefulWidget {

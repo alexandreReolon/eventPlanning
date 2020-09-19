@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Constants.dart';
+import 'package:eventPlanning/Constants.dart';
 
 Widget cardEvent({image, title, mes, date, hour}) {
   return Row(
@@ -13,14 +13,18 @@ Widget cardEvent({image, title, mes, date, hour}) {
             Text(
               date.toString(),
               style: TextStyle(
-                color: Colors.blue,
+                color: TEXTO_COLOR,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               mes.toString(),
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: TEXTO_COLOR,
+              ),
             )
           ],
         ),
@@ -30,18 +34,13 @@ Widget cardEvent({image, title, mes, date, hour}) {
           height: 110,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
+            image: DecorationImage(
+              image: AssetImage("assets/images/event.jpg"),
+              fit: BoxFit.cover,
+            ),
           ),
           child: Container(
             padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(
-                colors: [
-                  SECUNDARY_COLOR,
-                  PRIMARY_COLOR,
-                ],
-              ),
-            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -49,7 +48,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                 Text(
                   title.toString(),
                   style: TextStyle(
-                    color: Colors.white,
+                    color: TEXTO_COLOR,
                     fontSize: 23,
                     fontWeight: FontWeight.bold,
                   ),
@@ -61,14 +60,16 @@ Widget cardEvent({image, title, mes, date, hour}) {
                   children: <Widget>[
                     Icon(
                       Icons.access_time,
-                      color: Colors.white,
+                      color: TEXTO_COLOR,
                     ),
                     SizedBox(
                       width: 10,
                     ),
                     Text(
                       hour.toString(),
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: TEXTO_COLOR,
+                      ),
                     )
                   ],
                 )

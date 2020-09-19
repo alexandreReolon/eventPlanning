@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Constants.dart';
-import 'package:flutter_app/animations/FadeAnimation.dart';
-import 'package:flutter_app/components/cardEvent.dart';
-import 'package:flutter_app/components/iconButton.dart';
-import 'package:flutter_app/components/menu.dart';
+import 'package:eventPlanning/Constants.dart';
+import 'package:eventPlanning/animations/FadeAnimation.dart';
+import 'package:eventPlanning/components/cardEvent.dart';
+import 'package:eventPlanning/components/iconButton.dart';
 
 class HomePage extends StatelessWidget {
-  final drawer = Menu();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +55,7 @@ class HomePage extends StatelessWidget {
               FadeAnimation(
                 1.2,
                 cardEvent(
-                  image: 'assets/images/beacon.png',
+                  image: 'images/event.png',
                   title: 'Semana academica',
                   mes: 'SET',
                   hour: '19:00',

@@ -1,4 +1,4 @@
-package cydru.flutter_app
+package cydru.eventPlanning
 
 import io.flutter.embedding.android.FlutterActivity
 

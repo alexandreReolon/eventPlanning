@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Constants.dart';
+import 'package:eventPlanning/Constants.dart';
 
 Widget iconButton({text, icon, color}) {
   return Container(
