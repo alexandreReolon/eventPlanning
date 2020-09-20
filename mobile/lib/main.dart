@@ -4,9 +4,10 @@ import 'package:eventPlanning/pages/HomePage.dart';
 import 'package:eventPlanning/pages/LoginPage.dart';
 
 void main() async {
-  String logado = null;
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  String logado = null;
 
   runApp(MaterialApp(
     home: (logado != null) ? HomePage() : LoginPage(),

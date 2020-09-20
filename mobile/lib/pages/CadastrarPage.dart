@@ -172,7 +172,7 @@ class _HomeState extends State<CadastrarPage> {
       return 'AVISO CAMPO NÃO PODE SER VAZIO';
     }
 
-    if (email && (isEmail(value))) {
+    if (email && (!isEmail(value))) {
       return "INFORME UM EMAIL VÁLIDO";
     }
   }
