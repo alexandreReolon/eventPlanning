@@ -1,6 +1,8 @@
+import 'dart:developer';
+
+import 'package:eventPlanning/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:eventPlanning/Constants.dart';
 import 'package:eventPlanning/animations/FadeAnimation.dart';
 import 'package:eventPlanning/Service.dart' as Service;
 import 'package:string_validator/string_validator.dart';
@@ -19,7 +21,7 @@ class _HomeState extends State<CadastrarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: SECUNDARY_COLOR,
+      backgroundColor: BACKGROUND_COLOR,
       body: Form(
         key: cadastrarPageKey,
         child: SingleChildScrollView(
@@ -28,6 +30,9 @@ class _HomeState extends State<CadastrarPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(
+                height: 100,
+              ),
               FadeAnimation(
                 1.2,
                 Text(
@@ -98,7 +103,7 @@ class _HomeState extends State<CadastrarPage> {
                           controller: passwordInput,
                           decoration: InputDecoration(
                               hintStyle: TextStyle(
-                                color: Colors.grey.withOpacity(.8),
+                                color: SECUNDARY_COLOR.withOpacity(.8),
                               ),
                               border: InputBorder.none,
                               hintText: "Digite sua senha"),
@@ -155,15 +160,15 @@ class _HomeState extends State<CadastrarPage> {
         'password': passwordInput.text.toString()
       };
 
-      var response =
-          Service.post('usuarioService/cadastrarUsuario/', parametros, context);
+      var sucess = (json) {
+        print("sucesso");
+      };
 
-      if (response == null) {
-        return false;
-      }
+      Service.post(
+          'usuarioService/cadastrarUsuario/', parametros, context, sucess);
 
       //Volta a tela de login
-      Navigator.pop(context);
+      // Navigator.pop(context);
     }
   }
 

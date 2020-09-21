@@ -43,17 +43,17 @@ module.exports = function(app) {
       return false;
     }
 
-    userDAO.save(userModel, function(erro, result){
-      if(error){
-          res.status(500);
-          rest.send("NÃO FOI POSSÍVEL SALVAR O USUÁRIO");
-          return;
+    userDAO.save(userModel, function(error, result) {
+      if (error != null) {
+        res.status(500);
+        res.send("NÃO FOI POSSÍVEL SALVAR O USUÁRIO");
+        return;
+
+      } else {
+        res.status(200);
+        res.send("");
       }
-
-      logger.info(result);
-
     });
-
   });
 
 }

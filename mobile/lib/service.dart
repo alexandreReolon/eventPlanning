@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:toast/toast.dart';
 
@@ -16,7 +17,7 @@ Future get(String url, Object parameter) async {
   return null;
 }
 
-Future post(String url, Object parameter, context) async {
+Future post(String url, Object parameter, context, sucesso) async {
   String parametros = parameter != null ? jsonEncode(parameter) : '';
 
   http.Response response =
@@ -25,15 +26,13 @@ Future post(String url, Object parameter, context) async {
   var body = json.encode(response.body);
 
   if (response.statusCode == STATUS_CODE_SUCESS) {
-    return body;
+    print("ifzote");
+    sucesso(body);
+  } else {
+    mensagemErro(body, context);
   }
-
-  mensagemErro(body, context);
-  return null;
 }
 
 mensagemErro(body, context) {
   Toast.show(body, context, duration: 3, gravity: Toast.TOP);
-
-  return null;
 }

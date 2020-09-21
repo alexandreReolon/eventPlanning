@@ -3,9 +3,7 @@ import 'package:eventPlanning/components/CardEvent.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  Future<List<String>> agenda;
-
-
+  Future<List<String>> eventos;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +18,14 @@ class HomePage extends StatelessWidget {
                   InkWell(
                       onTap: () => {},
                       child: Text(
-                        "ADS",
+                        "FAVORITOS",
                         style: TextStyle(color: PRIMARY_COLOR),
                       )),
                 ],
               ),
               FutureBuilder(
-                future: agenda,
-                builder: (BuildContext, snapshort) {
+                future: eventos,
+                builder: (context, snapshort) {
                   return cardEvent(
                     image: 'images/event.png',
                     title: 'Semana academica',
