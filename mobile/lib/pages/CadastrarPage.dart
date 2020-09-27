@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:eventPlanning/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -161,14 +159,8 @@ class _HomeState extends State<CadastrarPage> {
       };
 
       var sucess = (json) {
-        print("sucesso");
+        Navigator.pop(context);
       };
-
-      Service.post(
-          'usuarioService/cadastrarUsuario/', parametros, context, sucess);
-
-      //Volta a tela de login
-      // Navigator.pop(context);
     }
   }
 

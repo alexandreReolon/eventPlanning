@@ -1,42 +1,166 @@
 import 'package:eventPlanning/Constants.dart';
-import 'package:eventPlanning/components/CardEvent.dart';
+import 'package:eventPlanning/modelos/Evento.dart';
+import 'package:eventPlanning/utils/EventList.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:eventPlanning/Service.dart' as Service;
 
-class HomePage extends StatelessWidget {
-  Future<List<String>> eventos;
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool _selected = true;
+
+  Future<List<Evento>> eventos;
+  EventList eventList = new EventList();
+
+  @override
+  void initState() {
+    super.initState();
+    getEventos();
+  }
+
+  getEventos() async {
+    setState(() {
+      eventos = Service.get('eventoService/adquirirEventos/', null, null);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 30),
+            ),
+            Container(
+              child: Row(
                 children: [
-                  InkWell(
-                      onTap: () => {},
-                      child: Text(
-                        "FAVORITOS",
-                        style: TextStyle(color: PRIMARY_COLOR),
-                      )),
+                  Text('HOME', style: TextStyle(color: Colors.white)),
+                  Padding(
+                    padding: EdgeInsets.only(left: 120, right: 135),
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        print('Hello');
+                      },
+                      child: CircleAvatar(
+                        radius: 25,
+                        backgroundColor: Colors.brown.shade800,
+                        child: Text('AH'),
+                      ))
                 ],
               ),
-              FutureBuilder(
-                future: eventos,
-                builder: (context, snapshort) {
-                  return cardEvent(
-                    image: 'images/event.png',
-                    title: 'Semana academica',
-                    mes: 'SET',
-                    hour: '19:00',
-                    date: 17,
-                  );
-                },
-              )
-            ],
-          ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
+              child: Divider(height: 10, color: Colors.white),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
+            ),
+            Container(
+              child: Text('AGENDA', style: TextStyle(color: Colors.white)),
+            ),
+            Container(
+              height: 60,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                children: [
+                  ChoiceChip(
+                    selected: _selected,
+                    label: Text('PROXÍMO'),
+                    backgroundColor: Colors.white,
+                    avatar: Container(
+                      width: 80,
+                      height: 80,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.green.withOpacity(0.4)),
+                      child: Center(
+                          child: Icon(Icons.not_listed_location,
+                              color: Colors.white)),
+                    ),
+                    onSelected: (bool selected) {
+                      setState(() {
+                        _selected = !_selected;
+                      });
+                    },
+                  ),
+                  SizedBox(width: 10),
+                  ChoiceChip(
+                    selected: _selected,
+                    label: Text('COMPUTAÇÃO'),
+                    backgroundColor: Colors.white,
+                    avatar: Container(
+                      width: 80,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.green.withOpacity(0.4),
+                      ),
+                      child: Center(
+                        child: Icon(Icons.not_listed_location,
+                            color: Colors.white),
+                      ),
+                    ),
+                    onSelected: (bool selected) {
+                      setState(() {
+                        _selected = !_selected;
+                      });
+                    },
+                  ),
+                  SizedBox(width: 10),
+                  ChoiceChip(
+                    selected: _selected,
+                    label: Text('FAVORITOS'),
+                    backgroundColor: Colors.white,
+                    avatar: Container(
+                      width: 80,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.green.withOpacity(0.4),
+                      ),
+                      child: Center(
+                        child: Icon(Icons.not_listed_location,
+                            color: Colors.white),
+                      ),
+                    ),
+                    onSelected: (bool selected) {
+                      setState(() {
+                        _selected = !_selected;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
+              child: Divider(height: 10, color: Colors.white),
+            ),
+            Visibility(
+              visible: _selected,
+              child: Container(
+                child: FutureBuilder(
+                  future: eventos,
+                  builder: (context, snapshort) {
+                    return eventList.lista(context, snapshort);
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

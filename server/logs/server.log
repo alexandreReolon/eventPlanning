@@ -281,3 +281,176 @@
 {"message":"::ffff:192.168.1.106 - - [21/Sep/2020:23:37:54 +0000] \"POST /usuarioService/cadastrarUsuario/ HTTP/1.1\" 200 0\n","level":"info"}
 {"message":"Executando o método ==> usuarioService/cadastrarUsuario","level":"info"}
 {"message":"::ffff:192.168.1.106 - - [21/Sep/2020:23:38:47 +0000] \"POST /usuarioService/cadastrarUsuario/ HTTP/1.1\" 200 0\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:05:42 +0000] \"POST /eventoService/adquirirEventos/ HTTP/1.1\" 404 170\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:06:15 +0000] \"POST /eventoService/adquirirEventos/ HTTP/1.1\" 404 170\n","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:06:21 +0000] \"POST /eventoService/adquirirEventos/ HTTP/1.1\" 404 170\n","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:06:24 +0000] \"POST /eventoService/adquirirEventos/ HTTP/1.1\" 404 170\n","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:06:59 +0000] \"POST /eventoService/adquirirEventos/ HTTP/1.1\" 404 170\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:08:38 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:08:42 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:08:59 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:09:23 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:09:37 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:09:49 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:10:56 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:14:06 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:15:20 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:17:09 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:17:50 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:18:37 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:29:42 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:33:15 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:36:17 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:38:25 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:39:15 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:39:32 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 201\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:41:28 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 101\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:41:49 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 101\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:42:38 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 101\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:43:41 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 101\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:43:53 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 101\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:44:35 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:45:09 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:53:25 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:53:49 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:56:18 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:00:56:41 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:01:01:14 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:01:02:24 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:01:11:16 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:01:11:29 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:01:14:52 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [22/Sep/2020:01:16:49 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:30:41 +0000] \"GET /eventosService/adquirirEventos HTTP/1.1\" 404 169\n","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:30:41 +0000] \"GET /eventosService/adquirirEventos HTTP/1.1\" 404 169\n","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:31:12 +0000] \"GET /eventosService/adquirirEventos HTTP/1.1\" 404 169\n","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:31:12 +0000] \"GET /eventosService/adquirirEventos HTTP/1.1\" 404 169\n","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:31:23 +0000] \"GET /eventosService/adquirirEventos HTTP/1.1\" 404 169\n","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:31:23 +0000] \"GET /eventosService/adquirirEventos HTTP/1.1\" 404 169\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:32:11 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:32:11 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:33:28 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:48:34 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:48:41 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:48:51 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:49:20 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:49:57 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:52:00 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:52:16 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:52:33 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:17:56:47 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:00:47 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:02:00 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:02:40 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:02:52 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:05:31 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:06:00 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:07:03 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:07:56 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:09:10 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:09:39 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:11:14 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 96\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [26/Sep/2020:18:29:21 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 186\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [27/Sep/2020:13:08:02 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 186\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [27/Sep/2020:13:08:23 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 186\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [27/Sep/2020:13:08:42 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 186\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [27/Sep/2020:13:08:53 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 186\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [27/Sep/2020:13:11:27 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 186\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [27/Sep/2020:13:12:20 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 186\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [27/Sep/2020:13:13:18 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 186\n","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.106 - - [27/Sep/2020:13:21:29 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 186\n","level":"info"}

@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/Constants.dart';
 
-Widget iconButton({text, icon, color}) {
-  return Container(
-    child: Chip(
-      backgroundColor: PRIMARY_COLOR,
-      padding: EdgeInsets.all(10),
-      label: Text(
-        text.toString(),
-        style: TextStyle(
-          color: color,
+Widget iconButton({text, icon, color, onSelected}) {
+  return ChoiceChip(
+      label: Text(text),
+      backgroundColor: color,
+      avatar: Container(
+        width: 80,
+        height: 80,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.green.withOpacity(0.4),
+        ),
+        child: Center(
+          child: Icon(icon, color: Colors.white),
         ),
       ),
-      avatar: CircleAvatar(
-        maxRadius: 100,
-        minRadius: 100,
-        backgroundColor: Colors.grey,
-        child: Icon(
-          icon,
-          color: color,
-          size: 25,
-        ),
-      ),
-    ),
-  );
+      onSelected: onSelected());
 }
