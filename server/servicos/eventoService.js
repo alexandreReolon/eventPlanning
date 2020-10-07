@@ -1,9 +1,8 @@
 const logger = require('../util/logger.js');
 
-module.exports = function(app) {
+module.exports = function (app) {
   const connection = app.persistencia.connection;
   const userDAO = new app.dao.userDAO(connection);
-
 
   app.get('/eventoService/adquirirEventos/', function(req, res) {
     logger.info("Executando o método ==> eventoService/adquirirEventos");
