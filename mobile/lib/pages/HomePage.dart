@@ -1,9 +1,12 @@
 import 'package:eventPlanning/Constants.dart';
 import 'package:eventPlanning/modelos/Evento.dart';
+import 'package:eventPlanning/pages/LoginPage.dart';
+import 'package:eventPlanning/pages/PerfilPage.dart';
 import 'package:eventPlanning/utils/EventList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/Service.dart' as Service;
+import 'package:page_transition/page_transition.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -49,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   GestureDetector(
                       onTap: () {
-                        print('Hello');
+                        clickUserButton(context);
                       },
                       child: CircleAvatar(
                         radius: 25,
@@ -162,6 +165,16 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  clickUserButton(context) {
+    Navigator.push(
+      context,
+      PageTransition(
+        type: PageTransitionType.fade,
+        child: PerfilPage(),
       ),
     );
   }

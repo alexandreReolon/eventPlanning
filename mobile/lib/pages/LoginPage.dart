@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:eventPlanning/components/Button.dart';
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/animations/FadeAnimation.dart';
@@ -5,8 +8,14 @@ import 'package:eventPlanning/Constants.dart';
 import 'package:eventPlanning/pages/CadastrarPage.dart';
 import 'package:eventPlanning/pages/HomePage.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:eventPlanning/Service.dart' as Service;
+import 'package:string_validator/string_validator.dart';
 
 class LoginPage extends StatelessWidget {
+  final loginPageKey = GlobalKey<FormState>();
+  final TextEditingController passwordInput = TextEditingController();
+  final TextEditingController emailInput = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,24 +56,32 @@ class LoginPage extends StatelessWidget {
                           bottom: BorderSide(color: SECUNDARY_COLOR),
                         ),
                       ),
-                      child: TextField(
+                      child: TextFormField(
+                        controller: emailInput,
                         decoration: InputDecoration(
-                            border: InputBorder.none,
                             hintStyle: TextStyle(
                               color: SECUNDARY_COLOR.withOpacity(.8),
                             ),
-                            hintText: "Digite seu email"),
+                            border: InputBorder.none,
+                            hintText: "Digite seu Email"),
+                        validator: (value) {
+                          return validador(value, false);
+                        },
                       ),
                     ),
                     Container(
                       decoration: BoxDecoration(),
-                      child: TextField(
+                      child: TextFormField(
+                        controller: passwordInput,
                         decoration: InputDecoration(
-                            border: InputBorder.none,
                             hintStyle: TextStyle(
                               color: SECUNDARY_COLOR.withOpacity(.8),
                             ),
+                            border: InputBorder.none,
                             hintText: "Digite sua senha"),
+                        validator: (value) {
+                          return validador(value, false);
+                        },
                       ),
                     ),
                   ],
@@ -120,12 +137,35 @@ class LoginPage extends StatelessWidget {
   }
 
   clickLogin(context) {
-    Navigator.push(
-      context,
-      PageTransition(
-        type: PageTransitionType.fade,
-        child: HomePage(),
-      ),
-    );
+    var parametros = {
+      'email':   emailInput.text.toString(),
+      'password': passwordInput.text.toString()
+    };
+
+    Service.post('usuarioService/efetuarLogin/', parametros, context)
+        .then((value) => {
+              if (value != null && value != '')
+                 {
+                     print(value),
+                     
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      child: HomePage(),
+                    ),
+                  )
+                }
+            });
+  }
+
+  validador(value, email) {
+    if (isNull(value) || value.isEmpty) {
+      return 'AVISO CAMPO NÃO PODE SER VAZIO';
+    }
+
+    if (email && (!isEmail(value))) {
+      return "INFORME UM EMAIL VÁLIDO";
+    }
   }
 }

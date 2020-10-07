@@ -6,9 +6,10 @@ module.exports = function(app) {
 
 
   app.get('/eventoService/adquirirEventos/', function(req, res) {
-    logger.info("Executando o método ==> usuarioService/efetuarLogin");
+    logger.info("Executando o método ==> eventoService/adquirirEventos");
+    
     const parameters = req.body;
-    res.send([{"image": "images/event.png","title": "Semana academica","mes": "SET","hour": "19:00","date": "17"}, {"image": "images/event.png","title": "CHINA E TOP","mes": "SET","hour": "19:00","date": "17"}]);
+    res.send([{"image": "images/event.png","title": "Apresentando para Otilia","mes": "NOV","hour": "19:00","date": "17"},{"image": "images/event.png","title": "Semana academica","mes": "SET","hour": "19:00","date": "17"}, {"image": "images/event.png","title": "CHINA E TOP","mes": "SET","hour": "19:00","date": "17"}]);
   });
 
 }

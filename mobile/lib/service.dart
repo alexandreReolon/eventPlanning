@@ -24,7 +24,7 @@ Future<List<Evento>> get(String url, Object parameter, context) async {
   }
 }
 
-Future posts(String url, Object parameter, context, sucesso) async {
+Future<String> post(String url, Object parameter, context) async {
   String parametros = parameter != null ? jsonEncode(parameter) : '';
 
   http.Response response =
@@ -33,12 +33,13 @@ Future posts(String url, Object parameter, context, sucesso) async {
   var body = json.encode(response.body);
 
   if (response.statusCode == STATUS_CODE_SUCESS) {
-    sucesso(body);
-  } else {
-    mensagemErro(body, context);
+    return body;
   }
+
+
+  mensagemErro(body, context);
 }
 
 mensagemErro(body, context) {
-  Toast.show(body, context, duration: 3, gravity: Toast.TOP);
+  Toast.show(body.toString(), context, duration: 10, gravity: Toast.TOP);
 }
