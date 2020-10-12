@@ -4,7 +4,7 @@ import 'package:eventPlanning/modelos/Evento.dart';
 import 'package:http/http.dart' as http;
 import 'package:toast/toast.dart';
 
-const BASE_URL = "";
+const BASE_URL = "http://192.168.1.106:8080/";
 const HEADERS = {'Content-type': 'application/json'};
 const STATUS_CODE_SUCESS = 200;
 
@@ -36,8 +36,7 @@ Future<String> post(String url, Object parameter, context) async {
     return body;
   }
 
-
-  mensagemErro(body, context);
+  mensagemErro(response.body, context);
 }
 
 mensagemErro(body, context) {

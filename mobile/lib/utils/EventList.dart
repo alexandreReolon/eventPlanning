@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class EventList extends State {
   Widget lista(context, snapshot) {
-    print(snapshot.data);
     switch (snapshot.connectionState) {
       case ConnectionState.none:
       case ConnectionState.waiting:

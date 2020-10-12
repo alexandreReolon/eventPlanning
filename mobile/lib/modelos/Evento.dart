@@ -42,29 +42,3 @@ class Evento {
     return data;
   }
 }
-
-// Future<List<Funcionario>> getfuncionario() async {
-//   http.Response response = await http.get(BASE_URL + 'Funcionario',
-//       headers: {'token': token, 'Content-Type': 'application/json'});
-//   print(response.body);
-//   if (response.statusCode == 200) {
-//     List<Funcionario> funcionarios =
-//         json.decode(response.body).map<Funcionario>((map) {
-//       return Funcionario.fromJson(map);
-//     }).toList();
-//     return funcionarios;
-//   } else {
-//     return null;
-//   }
-// }
-
-// Navigator.pushReplacement(
-//      context,
-//     PageTransition(
-//        type: PageTransitionType.fade,
-//       child: HomePage(),
-//      ),
-//   );
-
-//CRON
-//IMAGE MEMORY

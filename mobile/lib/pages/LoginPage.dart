@@ -9,6 +9,7 @@ import 'package:eventPlanning/pages/CadastrarPage.dart';
 import 'package:eventPlanning/pages/HomePage.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:eventPlanning/Service.dart' as Service;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:string_validator/string_validator.dart';
 
 class LoginPage extends StatelessWidget {
@@ -136,27 +137,26 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  clickLogin(context) {
+  clickLogin(context) async {
     var parametros = {
-      'email':   emailInput.text.toString(),
+      'email': emailInput.text.toString(),
       'password': passwordInput.text.toString()
     };
 
     Service.post('usuarioService/efetuarLogin/', parametros, context)
-        .then((value) => {
-              if (value != null && value != '')
-                 {
-                     print(value),
-                     
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                      type: PageTransitionType.fade,
-                      child: HomePage(),
-                    ),
-                  )
-                }
-            });
+        .then((value) async {
+      if (value != null) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('counter', value);
+        Navigator.push(
+          context,
+          PageTransition(
+            type: PageTransitionType.fade,
+            child: HomePage(),
+          ),
+        );
+      }
+    });
   }
 
   validador(value, email) {

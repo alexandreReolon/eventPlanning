@@ -13,3 +13,10 @@ const BACKGROUND_COLOR = Color.fromRGBO(7, 32, 48, 1);
 const TEXTO_COLOR = Color.fromRGBO(246, 249, 250, 1);
 const TEXTO_PRIMARY_COLOR = Color.fromRGBO(252, 16, 85, 1);
 const TEXTO_SECUNDARY_COLOR = Color.fromRGBO(246, 249, 250, 1);
+
+//stack sopreboem widget
+//safearea para recorte tela
+//get pub
+class LightColors {
+  static const Color kLightYellow = Color(0xFFFFF9EC);
+}

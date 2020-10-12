@@ -1,5 +1,6 @@
 import 'package:eventPlanning/Constants.dart';
 import 'package:eventPlanning/modelos/Evento.dart';
+import 'package:eventPlanning/pages/CadastroEvento.dart';
 import 'package:eventPlanning/pages/LoginPage.dart';
 import 'package:eventPlanning/pages/PerfilPage.dart';
 import 'package:eventPlanning/utils/EventList.dart';
@@ -174,7 +175,7 @@ class _HomePageState extends State<HomePage> {
       context,
       PageTransition(
         type: PageTransitionType.fade,
-        child: PerfilPage(),
+        child: CadastroEvento(),
       ),
     );
   }

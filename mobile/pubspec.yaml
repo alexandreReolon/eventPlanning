@@ -27,6 +27,8 @@ dependencies:
   page_transition: ^1.1.6
   toast: ^0.1.5
   string_validator: ^0.1.4
+  shared_preferences: ^0.5.12
+
   flutter:
     sdk: flutter
 

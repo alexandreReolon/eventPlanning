@@ -29,7 +29,7 @@ module.exports = function (app) {
   
         } else {
           res.status(500);
-          res.send("EMAIL OU SENHA NÃO CONFEREM, VERIFIQUE E TENTE NOVAMENTE!");
+          res.send('EMAIL OU SENHA NÃO CONFEREM, VERIFIQUE E TENTE NOVAMENTE!');
           res.end();
         }
       });
@@ -37,7 +37,7 @@ module.exports = function (app) {
     } catch (e) {
       console.log(e)
       res.status(500);
-      res.send("EMAIL OU SENHA NÃO CONFEREM, VERIFIQUE E TENTE NOVAMENTE!");
+      res.send('EMAIL OU SENHA NÃO CONFEREM, VERIFIQUE E TENTE NOVAMENTE!');
       res.end();
     }
 

@@ -10,22 +10,35 @@ Widget cardEvent({image, title, mes, date, hour}) {
         margin: EdgeInsets.only(right: 10),
         child: Column(
           children: <Widget>[
-            Text(
-              date.toString(),
-              style: TextStyle(
-                color: TEXTO_COLOR,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+            Container(
+              height: 50,
+              width: 50,
+              padding: EdgeInsets.only(top: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: SECUNDARY_COLOR,
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    date.toString(),
+                    style: TextStyle(
+                      color: TEXTO_COLOR,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    mes.toString(),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: TEXTO_COLOR,
+                    ),
+                  )
+                ],
               ),
             ),
-            Text(
-              mes.toString(),
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                color: TEXTO_COLOR,
-              ),
-            )
           ],
         ),
       ),
