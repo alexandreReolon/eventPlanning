@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:eventPlanning/components/Button.dart';
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/animations/FadeAnimation.dart';
@@ -99,7 +96,7 @@ class LoginPage extends StatelessWidget {
                   onTap: () {
                     this.clickLogin(context);
                   },
-                  child: Button(
+                  child: button(
                     text: "Login",
                   ),
                 ),
@@ -115,7 +112,7 @@ class LoginPage extends StatelessWidget {
                   onTap: () {
                     this.clickButtonCadastrar(context);
                   },
-                  child: Button(
+                  child: button(
                     text: "Cadastrar-se",
                   ),
                 ),

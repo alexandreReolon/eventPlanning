@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/Constants.dart';
 
-Widget Button({text}) {
+Widget button({text}) {
   return Container(
     width: 200,
     padding: EdgeInsets.all(15),
