@@ -1,6 +1,6 @@
-import 'package:eventPlanning/Constants.dart';
+import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/modelos/Evento.dart';
-import 'package:eventPlanning/pages/CadastroEvento.dart';
+import 'package:eventPlanning/pages/PerfilPage.dart';
 import 'package:eventPlanning/utils/EventList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: BACKGROUND_COLOR,
+      backgroundColor: CColors.BACKGROUND_COLOR,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,7 +173,7 @@ class _HomePageState extends State<HomePage> {
       context,
       PageTransition(
         type: PageTransitionType.fade,
-        child: CadastroEvento(),
+        child: PerfilPage(),
       ),
     );
   }

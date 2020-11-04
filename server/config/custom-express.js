@@ -29,7 +29,7 @@ module.exports = function () {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
-  consign()
+    consign()
     .then('persistencia')
     .then('util')
     .then('dao')

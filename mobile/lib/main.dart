@@ -1,7 +1,5 @@
-import 'dart:async';
-
-import 'package:eventPlanning/HomePage.dart';
-import 'package:eventPlanning/pages/LoginPage.dart';
+import 'package:eventPlanning/pages/CadastroEventoPage.dart';
+import 'package:eventPlanning/pages/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
@@ -15,8 +13,7 @@ void main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-
-  logado = prefs.getString('counter');
+  logado = prefs.getString('user');
 
   runApp(MyApp());
 }
@@ -37,7 +34,6 @@ class _MyAppState extends State<MyApp> {
     configurePush();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initBeacons() async {
     await flutterBeacon.initializeAndCheckScanning;
 
@@ -54,14 +50,6 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: (logado != null) ? HomePage() : LoginPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-
   configurePush() {
     flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
     var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -72,6 +60,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future onSelectNotification(String load) {
+    print("click" + load);
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
@@ -85,5 +74,63 @@ class _MyAppState extends State<MyApp> {
     var plaftform = new NotificationDetails(android: android);
 
     flutterLocalNotificationsPlugin.show(0, "title", "body", plaftform);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  List<Widget> pages;
+  Widget currentPage;
+  int currentTab = 0;
+
+  final PageStorageBucket bucket = PageStorageBucket();
+
+  @override
+  void initState() {
+    pages = [HomePage(), CadastroEventoPage()];
+
+    currentPage = pages[0];
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageStorage(
+        child: currentPage,
+        bucket: bucket,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentTab,
+        onTap: (int index) {
+          setState(() {
+            currentTab = index;
+            currentPage = pages[index];
+          });
+        },
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.event),
+            title: Text('Eventos'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.event_available),
+            title: Text("Cadastro Evento"),
+          ),
+        ],
+      ),
+    );
   }
 }

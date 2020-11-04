@@ -144,7 +144,7 @@ class LoginPage extends StatelessWidget {
         .then((value) async {
       if (value != null) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('counter', value);
+        await prefs.setString('user', value);
         Navigator.push(
           context,
           PageTransition(

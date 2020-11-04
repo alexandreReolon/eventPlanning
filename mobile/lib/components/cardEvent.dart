@@ -1,5 +1,5 @@
+import 'package:eventPlanning/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:eventPlanning/Constants.dart';
 
 Widget cardEvent({image, title, mes, date, hour}) {
   return Row(
@@ -16,14 +16,14 @@ Widget cardEvent({image, title, mes, date, hour}) {
               padding: EdgeInsets.only(top: 5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: SECUNDARY_COLOR,
+                color: CColors.SECUNDARY_COLOR,
               ),
               child: Column(
                 children: [
                   Text(
                     date.toString(),
                     style: TextStyle(
-                      color: TEXTO_COLOR,
+                      color: CColors.TEXTO_COLOR,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -33,7 +33,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: TEXTO_COLOR,
+                      color: CColors.TEXTO_COLOR,
                     ),
                   )
                 ],
@@ -61,7 +61,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                 Text(
                   title.toString(),
                   style: TextStyle(
-                    color: TEXTO_COLOR,
+                    color: CColors.TEXTO_COLOR,
                     fontSize: 23,
                     fontWeight: FontWeight.bold,
                   ),
@@ -73,7 +73,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                   children: <Widget>[
                     Icon(
                       Icons.access_time,
-                      color: TEXTO_COLOR,
+                      color: CColors.TEXTO_COLOR,
                     ),
                     SizedBox(
                       width: 10,
@@ -81,7 +81,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                     Text(
                       hour.toString(),
                       style: TextStyle(
-                        color: TEXTO_COLOR,
+                        color: CColors.TEXTO_COLOR,
                       ),
                     )
                   ],

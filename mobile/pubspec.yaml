@@ -29,6 +29,14 @@ dependencies:
   string_validator: ^0.1.4
   shared_preferences: ^0.5.12
 
+  #IMAGE GALERY
+  path_provider: ^1.6.9
+  image_picker: ^0.6.7
+  image: ^2.1.4
+
+  #BOTTOM NAVIGATOR
+  provider: ^4.3.2+2
+
   #BEACON SCAN  
   flutter_beacon: ^0.3.0
 
