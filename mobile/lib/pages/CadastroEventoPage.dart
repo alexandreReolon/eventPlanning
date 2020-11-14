@@ -1,10 +1,14 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:ui';
 import 'package:eventPlanning/Service.dart' as Service;
 
 import 'package:eventPlanning/constants.dart';
+import 'package:eventPlanning/widgets/CustomDropDown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/animations/FadeAnimation.dart';
+import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:string_validator/string_validator.dart';
 
@@ -16,8 +20,11 @@ class CadastroEventoPage extends StatefulWidget {
 class _HomeState extends State<CadastroEventoPage> {
   final cadastrarPageKey = GlobalKey<FormState>();
   final TextEditingController nameInput = TextEditingController();
-  final TextEditingController passwordInput = TextEditingController();
-  final TextEditingController emailInput = TextEditingController();
+  final TextEditingController mensagemInput = TextEditingController();
+
+  DateTime dataInput = new DateTime.now();
+  String base64Image;
+  int beacons = CBeacon.AZUL;
 
   Widget cupertinoDate() {
     return CupertinoDatePicker(
@@ -28,16 +35,19 @@ class _HomeState extends State<CadastroEventoPage> {
       minuteInterval: 1,
       mode: CupertinoDatePickerMode.dateAndTime,
       onDateTimeChanged: (DateTime newdate) {
-        print(newdate);
+        dataInput = newdate;
       },
     );
   }
 
   ImagePicker _imagePicker = new ImagePicker();
 
-  Future<PickedFile> _loadImage(ImageSource imageSource) async {
+  _loadImage(ImageSource imageSource) async {
     PickedFile file = await _imagePicker.getImage(source: imageSource);
-    return file;
+
+    File imageFile = new File(file.path);
+    List<int> imageBytes = imageFile.readAsBytesSync();
+    base64Image = base64Encode(imageBytes).toString();
   }
 
   @override
@@ -114,7 +124,7 @@ class _HomeState extends State<CadastroEventoPage> {
                           validator: (value) {
                             return validador(value, false);
                           },
-                          controller: nameInput,
+                          controller: mensagemInput,
                           decoration: InputDecoration(
                             hintText: "Digite uma mensagem de divulgação",
                             border: InputBorder.none,
@@ -125,8 +135,27 @@ class _HomeState extends State<CadastroEventoPage> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
+                      CustomDropDown(
+                          hint: 'hint',
+                          errorText: '',
+                          value: beacons,
+                          items: [
+                            DropdownMenuItem(
+                              value: CBeacon.AZUL,
+                              child: Text('Beacon Azul'),
+                            ),
+                            DropdownMenuItem(
+                              value: CBeacon.BRANCO,
+                              child: Text('Beacon Branco'),
+                            ),
+                          ].cast<DropdownMenuItem<int>>(),
+                          onChanged: (value) {
+                            setState(() {
+                              beacons = value;
+                            });
+                          }),
                       Center(
                         child: InkWell(
                           child: Container(
@@ -150,8 +179,9 @@ class _HomeState extends State<CadastroEventoPage> {
                                 context: context,
                                 builder: (BuildContext builder) {
                                   return Container(
-                                      child: cupertinoDate(),
-                                      height: heightMedia);
+                                    child: cupertinoDate(),
+                                    height: heightMedia,
+                                  );
                                 });
                           },
                         ),
@@ -223,20 +253,20 @@ class _HomeState extends State<CadastroEventoPage> {
   }
 
   clickSalvar() {
-    if (cadastrarPageKey.currentState.validate()) {
-      var parametros = {
-        'name': nameInput.text.toString(),
-        'email': emailInput.text.toString(),
-        'password': passwordInput.text.toString()
-      };
+    var parametros = {
+      'titulo': nameInput.text.toString(),
+      'dataInicio': dataInput.toString(),
+      'imagem': base64Image,
+      'mensagem': mensagemInput.text.toString(),
+      'beacon': beacons,
+    };
 
-      var sucess = (json) {
-        Navigator.pop(context);
-      };
+    print(parametros);
 
-    Service.post('eventoService/adquirirEventos/', null, null);
-
-    }
+    Service.post('eventoService/salvarEventos/', parametros, context)
+        .then((value) async {
+      print(value);
+    });
   }
 
   validador(value, email) {

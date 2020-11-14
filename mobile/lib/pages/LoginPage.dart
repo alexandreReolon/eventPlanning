@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: BACKGROUND_COLOR,
+      backgroundColor: CColors.BACKGROUND_COLOR,
       body: Container(
         padding: EdgeInsets.all(30),
         child: Column(
@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget {
                 "Login",
                 style: TextStyle(
                   fontSize: 40,
-                  color: PRIMARY_COLOR,
+                  color: CColors.PRIMARY_COLOR,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -44,21 +44,21 @@ class LoginPage extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: PRIMARY_COLOR,
+                  color: CColors.PRIMARY_COLOR,
                 ),
                 child: Column(
                   children: <Widget>[
                     Container(
                       decoration: BoxDecoration(
                         border: Border(
-                          bottom: BorderSide(color: SECUNDARY_COLOR),
+                          bottom: BorderSide(color: CColors.SECUNDARY_COLOR),
                         ),
                       ),
                       child: TextFormField(
                         controller: emailInput,
                         decoration: InputDecoration(
                             hintStyle: TextStyle(
-                              color: SECUNDARY_COLOR.withOpacity(.8),
+                              color: CColors.SECUNDARY_COLOR.withOpacity(.8),
                             ),
                             border: InputBorder.none,
                             hintText: "Digite seu Email"),
@@ -73,7 +73,7 @@ class LoginPage extends StatelessWidget {
                         controller: passwordInput,
                         decoration: InputDecoration(
                             hintStyle: TextStyle(
-                              color: SECUNDARY_COLOR.withOpacity(.8),
+                              color: CColors.SECUNDARY_COLOR.withOpacity(.8),
                             ),
                             border: InputBorder.none,
                             hintText: "Digite sua senha"),

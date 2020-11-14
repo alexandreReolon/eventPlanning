@@ -14,3 +14,8 @@ class CColors {
 
   static const SUCESS_COLOR = Color.fromRGBO(34, 187, 51, 1);
 }
+
+class CBeacon {
+  static const int AZUL = 1;
+  static const int BRANCO = 2;
+}

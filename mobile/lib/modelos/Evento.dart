@@ -19,11 +19,11 @@ class Evento {
   factory Evento.fromJson(Map<String, dynamic> json) {
     return Evento(
       id: json['id'],
-      hour: json['hour'],
-      title: json['title'],
-      image: json['image'],
-      mes: json['mes'],
-      date: json['date'],
+      hour: json['hour'].toString(),
+      title: json['title'].toString(),
+      image: json['image'].toString(),
+      mes: json['mes'].toString(),
+      date: json['date'].toString(),
     );
   }
 

@@ -60,7 +60,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future onSelectNotification(String load) {
-    print("click" + load);
     showDialog(
         context: context,
         builder: (_) => AlertDialog(

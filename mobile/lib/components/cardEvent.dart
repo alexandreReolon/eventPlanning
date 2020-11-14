@@ -1,7 +1,12 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:eventPlanning/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget cardEvent({image, title, mes, date, hour}) {
+  Uint8List bytes = base64.decode(image);
+
   return Row(
     children: <Widget>[
       Container(
