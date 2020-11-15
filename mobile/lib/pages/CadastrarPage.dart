@@ -3,6 +3,7 @@ import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/utils/login_form_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:eventPlanning/Service.dart' as Service;
 
 class CadastrarPage extends StatefulWidget {
   CadastrarPage({Key key}) : super(key: key);
@@ -112,15 +113,18 @@ class _CadastrarPageState extends State<CadastrarPage> {
     );
   }
 
-  clickButtonCadastro() {
+  clickButtonCadastro(parametro) {
     var parametros = {
-      'name': nameInput.text.toString(),
-      'email': emailInput.text.toString(),
-      'password': passwordInput.text.toString()
+      'name': nameInput.text,
+      'email': emailInput.text,
+      'password': passwordInput.text
     };
 
-    var sucess = (json) {
-      Navigator.pop(context);
-    };
+    Service.post('usuarioService/cadastrarUsuario/', parametros, context)
+        .then((value) async {
+      if (value != null) {
+        Navigator.pop(context);
+      }
+    });
   }
 }

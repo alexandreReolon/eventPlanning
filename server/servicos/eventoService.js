@@ -1,4 +1,6 @@
-const { Colorizer } = require('logform');
+const {
+  Colorizer
+} = require('logform');
 const logger = require('../util/logger.js');
 
 module.exports = function (app) {
@@ -14,7 +16,9 @@ module.exports = function (app) {
         console.log(err);
 
         res.status(500);
-        res.json({ "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO" });
+        res.json({
+          "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO"
+        });
       } else {
         res.send(result);
       }
@@ -36,7 +40,7 @@ module.exports = function (app) {
 
     const event = {
       titulo: parameters.titulo,
-      dataCadastro: new Date(parameters.dataInicio),
+      dataCadastro: new Date(),
       dataInicio: new Date(parameters.dataInicio),
       imagem: parameters.imagem
     }
@@ -47,13 +51,17 @@ module.exports = function (app) {
         console.log(err);
 
         res.status(500);
-        res.json({ "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO" });
+        res.json({
+          "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO"
+        });
       } else {
 
         conexao.query("SELECT LAST_INSERT_ID()", (err, result) => {
           if (err || result.affectedRows <= 0) {
             res.status(500);
-            res.json({ "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO" });
+            res.json({
+              "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO"
+            });
 
           } else {
 
@@ -70,11 +78,15 @@ module.exports = function (app) {
               console.log(err);
               if (err || result.affectedRows <= 0) {
                 res.status(500);
-                res.json({ "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO" });
+                res.json({
+                  "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO"
+                });
 
               } else {
                 res.status(200);
-                res.json({ "message": "EVENTO CRIADO" });
+                res.json({
+                  "message": "EVENTO CRIADO"
+                });
               }
             });
           }
