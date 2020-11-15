@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:toast/toast.dart';
 
-const BASE_URL = "http://192.168.1.105:8080/";
+const BASE_URL = "http://192.168.1.107:8080/";
 const HEADERS = {'Content-type': 'application/json'};
 const STATUS_CODE_SUCESS = 200;
 
@@ -33,5 +33,5 @@ Future<String> post(String url, Object parameter, context) async {
 }
 
 mensagemErro(body, context) {
-  Toast.show(body.toString(), context, duration: 10, gravity: Toast.TOP);
+  Toast.show(body.toString(), context, duration: 5, gravity: Toast.TOP);
 }

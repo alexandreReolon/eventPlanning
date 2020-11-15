@@ -43,6 +43,9 @@ dependencies:
   #Notification
   flutter_local_notifications: ^3.0.0+1
 
+  #Rive
+  flare_flutter: ^2.0.6
+
   flutter:
     sdk: flutter
 
@@ -67,7 +70,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/event.jpg
+    - assets/animations/flow.flr
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

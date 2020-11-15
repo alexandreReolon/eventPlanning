@@ -12,7 +12,7 @@ class _PerfilPageState extends State<PerfilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: CColors.SECUNDARY_COLOR,
+        backgroundColor: CColors.COLOR_SECUNDARY,
         title: Text(
           "Perfil Page",
           style: TextStyle(
@@ -34,7 +34,7 @@ class _PerfilPageState extends State<PerfilPage> {
                 'NOME',
                 style: TextStyle(
                   fontFamily: 'SourceSansPro',
-                  color: CColors.TEXTO_COLOR,
+                  color: CColors.COLOR_SECUNDARY,
                   fontSize: 25,
                 ),
               ),
@@ -43,7 +43,7 @@ class _PerfilPageState extends State<PerfilPage> {
                 style: TextStyle(
                   fontSize: 20,
                   fontFamily: 'SourceSansPro',
-                  color: CColors.TEXTO_COLOR,
+                  color: CColors.COLOR_SECUNDARY,
                   letterSpacing: 2.5,
                 ),
               ),

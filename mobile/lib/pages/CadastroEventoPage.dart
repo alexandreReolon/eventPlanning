@@ -8,7 +8,6 @@ import 'package:eventPlanning/widgets/CustomDropDown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/animations/FadeAnimation.dart';
-import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:string_validator/string_validator.dart';
 
@@ -73,7 +72,7 @@ class _HomeState extends State<CadastroEventoPage> {
                   "Cadastro de Eventos",
                   style: TextStyle(
                       fontSize: 40,
-                      color: CColors.PRIMARY_COLOR,
+                      color: CColors.COLOR_SECUNDARY,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -86,7 +85,7 @@ class _HomeState extends State<CadastroEventoPage> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: CColors.PRIMARY_COLOR,
+                    color: CColors.COLOR_SECUNDARY,
                   ),
                   child: Column(
                     children: <Widget>[
@@ -94,7 +93,7 @@ class _HomeState extends State<CadastroEventoPage> {
                         decoration: BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              color: CColors.SECUNDARY_COLOR,
+                              color: CColors.COLOR_SECUNDARY,
                             ),
                           ),
                         ),
@@ -107,7 +106,7 @@ class _HomeState extends State<CadastroEventoPage> {
                             hintText: "Digite o nome do evento",
                             border: InputBorder.none,
                             hintStyle: TextStyle(
-                              color: CColors.SECUNDARY_COLOR.withOpacity(.8),
+                              color: CColors.COLOR_SECUNDARY.withOpacity(.8),
                             ),
                           ),
                         ),
@@ -116,7 +115,7 @@ class _HomeState extends State<CadastroEventoPage> {
                         decoration: BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              color: CColors.SECUNDARY_COLOR,
+                              color: CColors.COLOR_SECUNDARY,
                             ),
                           ),
                         ),
@@ -129,7 +128,7 @@ class _HomeState extends State<CadastroEventoPage> {
                             hintText: "Digite uma mensagem de divulgação",
                             border: InputBorder.none,
                             hintStyle: TextStyle(
-                              color: CColors.SECUNDARY_COLOR.withOpacity(.8),
+                              color: CColors.COLOR_SECUNDARY.withOpacity(.8),
                             ),
                           ),
                         ),
@@ -163,13 +162,14 @@ class _HomeState extends State<CadastroEventoPage> {
                             padding: EdgeInsets.all(15),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: CColors.TERTIARY_COLOR,
+                              color: CColors.COLOR_SECUNDARY,
                             ),
                             child: Center(
                               child: Text(
                                 "SELECIONAR DATA",
                                 style: TextStyle(
-                                  color: CColors.PRIMARY_COLOR.withOpacity(.7),
+                                  color:
+                                      CColors.COLOR_SECUNDARY.withOpacity(.7),
                                 ),
                               ),
                             ),
@@ -196,13 +196,14 @@ class _HomeState extends State<CadastroEventoPage> {
                             padding: EdgeInsets.all(15),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: CColors.TERTIARY_COLOR,
+                              color: CColors.COLOR_SECUNDARY,
                             ),
                             child: Center(
                               child: Text(
                                 "ADICIONAR IMAGEM",
                                 style: TextStyle(
-                                  color: CColors.PRIMARY_COLOR.withOpacity(.7),
+                                  color:
+                                      CColors.COLOR_SECUNDARY.withOpacity(.7),
                                 ),
                               ),
                             ),
@@ -237,7 +238,7 @@ class _HomeState extends State<CadastroEventoPage> {
                         child: Text(
                           "SALVAR",
                           style: TextStyle(
-                            color: CColors.PRIMARY_COLOR.withOpacity(.7),
+                            color: CColors.COLOR_SECUNDARY.withOpacity(.7),
                           ),
                         ),
                       ),

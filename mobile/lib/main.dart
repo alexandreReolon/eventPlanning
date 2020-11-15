@@ -1,5 +1,5 @@
-import 'package:eventPlanning/pages/CadastroEventoPage.dart';
-import 'package:eventPlanning/pages/HomePage.dart';
+import 'package:eventPlanning/pages/LoginPage.dart';
+import 'package:eventPlanning/pages/MenuBottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
@@ -89,47 +89,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Widget> pages;
-  Widget currentPage;
-  int currentTab = 0;
-
-  final PageStorageBucket bucket = PageStorageBucket();
-
   @override
   void initState() {
-    pages = [HomePage(), CadastroEventoPage()];
-
-    currentPage = pages[0];
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageStorage(
-        child: currentPage,
-        bucket: bucket,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentTab,
-        onTap: (int index) {
-          setState(() {
-            currentTab = index;
-            currentPage = pages[index];
-          });
-        },
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.event),
-            title: Text('Eventos'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.event_available),
-            title: Text("Cadastro Evento"),
-          ),
-        ],
-      ),
-    );
+    return Scaffold(body: logado != null ? MenuBottom() : LoginPage());
   }
 }

@@ -1,15 +1,16 @@
-import 'package:eventPlanning/constants.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:eventPlanning/animations/FadeAnimation.dart';
-import 'package:string_validator/string_validator.dart';
+import 'package:eventPlanning/constants.dart';
+import 'package:eventPlanning/utils/login_form_fields.dart';
+import 'package:flutter/material.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 class CadastrarPage extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
+  CadastrarPage({Key key}) : super(key: key);
+
+  _CadastrarPageState createState() => _CadastrarPageState();
 }
 
-class _HomeState extends State<CadastrarPage> {
+class _CadastrarPageState extends State<CadastrarPage> {
   final cadastrarPageKey = GlobalKey<FormState>();
   final TextEditingController nameInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
@@ -18,158 +19,108 @@ class _HomeState extends State<CadastrarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CColors.BACKGROUND_COLOR,
-      body: Form(
-        key: cadastrarPageKey,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
+      appBar: AppBar(
+        title: Text('Cadastre-se '),
+      ),
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          double paddingTop = 50;
+
+          if (constraints.constrainHeight() <= 300) {
+            paddingTop = 5;
+          }
+
+          return Stack(
             children: <Widget>[
-              SizedBox(
-                height: 100,
+              FlareActor(
+                "assets/animations/flow.flr",
+                animation: "flow",
+                fit: BoxFit.fill,
               ),
-              FadeAnimation(
-                1.2,
-                Text(
-                  "Cadastro",
-                  style: TextStyle(
-                      fontSize: 40,
-                      color: CColors.PRIMARY_COLOR,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              FadeAnimation(
-                1.5,
-                Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: CColors.PRIMARY_COLOR,
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: CColors.SECUNDARY_COLOR,
+              Container(
+                padding: EdgeInsets.only(left: 25, right: 25),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: cadastrarText(),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: FadeAnimation(
+                        2.0,
+                        Container(
+                          child: Form(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                field(
+                                  text: "Nome",
+                                  paddingTop: paddingTop,
+                                  controller: nameInput,
+                                ),
+                                emailField(
+                                  paddingTop: 10,
+                                  controller: emailInput,
+                                ),
+                                passwordField(
+                                  paddingTop: 10,
+                                  controller: passwordInput,
+                                ),
+                                cadastroButton(
+                                    context: context,
+                                    click: clickButtonCadastro)
+                              ],
                             ),
-                          ),
-                        ),
-                        child: TextFormField(
-                          validator: (value) {
-                            return validador(value, false);
-                          },
-                          controller: nameInput,
-                          decoration: InputDecoration(
-                            hintText: "Digite seu nome",
-                            border: InputBorder.none,
-                            hintStyle: TextStyle(
-                              color: CColors.SECUNDARY_COLOR.withOpacity(.8),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(color: CColors.SECUNDARY_COLOR),
-                          ),
-                        ),
-                        child: TextFormField(
-                          validator: (value) {
-                            return validador(value, true);
-                          },
-                          controller: emailInput,
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintStyle: TextStyle(
-                                color: CColors.SECUNDARY_COLOR.withOpacity(.8),
-                              ),
-                              hintText: "Digite seu email"),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(),
-                        child: TextFormField(
-                          controller: passwordInput,
-                          decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                color: CColors.SECUNDARY_COLOR.withOpacity(.8),
-                              ),
-                              border: InputBorder.none,
-                              hintText: "Digite sua senha"),
-                          validator: (value) {
-                            return validador(value, false);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              FadeAnimation(
-                1.8,
-                Center(
-                  child: InkWell(
-                    onTap: () {
-                      this.clickButtonCadastro();
-                    },
-                    child: Container(
-                      width: 120,
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: CColors.TERTIARY_COLOR,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "CADASTRAR",
-                          style: TextStyle(
-                            color: CColors.PRIMARY_COLOR.withOpacity(.7),
                           ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget cadastrarText() {
+    return FadeAnimation(
+      1.8,
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child:
+                  Text("Preencha os campos abaixo para realizar o seu cadastro",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: CColors.TEXT_COLOR,
+                        fontWeight: FontWeight.bold,
+                      )),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 
   clickButtonCadastro() {
-    if (cadastrarPageKey.currentState.validate()) {
-      var parametros = {
-        'name': nameInput.text.toString(),
-        'email': emailInput.text.toString(),
-        'password': passwordInput.text.toString()
-      };
+    var parametros = {
+      'name': nameInput.text.toString(),
+      'email': emailInput.text.toString(),
+      'password': passwordInput.text.toString()
+    };
 
-      var sucess = (json) {
-        Navigator.pop(context);
-      };
-    }
-  }
-
-  validador(value, email) {
-    if (isNull(value) || value.isEmpty) {
-      return 'AVISO CAMPO NÃO PODE SER VAZIO';
-    }
-
-    if (email && (!isEmail(value))) {
-      return "INFORME UM EMAIL VÁLIDO";
-    }
+    var sucess = (json) {
+      Navigator.pop(context);
+    };
   }
 }

@@ -33,6 +33,11 @@ const conexao = mysql.createConnection({
 ## Comandos uteis mobile
 Para executar:
 ```sh
+flutter run
+```
+
+#Para verificar se as configurações do flutter
+```sh
 flutter doctor
 ```
 

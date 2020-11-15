@@ -25,7 +25,7 @@ class CustomDropDown extends StatelessWidget {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              color: CColors.TERTIARY_COLOR,
+              color: CColors.COLOR_SECUNDARY,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Padding(
@@ -36,19 +36,19 @@ class CustomDropDown extends StatelessWidget {
                 bottom: 5,
               ),
               child: DropdownButton<int>(
-                dropdownColor: CColors.TERTIARY_COLOR,
+                dropdownColor: CColors.COLOR_SECUNDARY,
                 value: value,
                 hint: Text(
                   hint,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 18,
-                    color: CColors.TEXTO_PRIMARY_COLOR,
+                    color: CColors.COLOR_SECUNDARY,
                   ),
                 ),
                 style: TextStyle(
                   fontSize: 18,
-                  color: CColors.PRIMARY_COLOR.withOpacity(.7),
+                  color: CColors.COLOR_SECUNDARY.withOpacity(.7),
                 ),
                 items: items,
                 isExpanded: true,

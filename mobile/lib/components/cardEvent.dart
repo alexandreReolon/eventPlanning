@@ -1,12 +1,7 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:eventPlanning/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget cardEvent({image, title, mes, date, hour}) {
-  Uint8List bytes = base64.decode(image);
-
   return Row(
     children: <Widget>[
       Container(
@@ -21,14 +16,14 @@ Widget cardEvent({image, title, mes, date, hour}) {
               padding: EdgeInsets.only(top: 5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: CColors.SECUNDARY_COLOR,
+                color: CColors.BACKGROUND_COLOR,
               ),
               child: Column(
                 children: [
                   Text(
                     date.toString(),
                     style: TextStyle(
-                      color: CColors.TEXTO_COLOR,
+                      color: CColors.BACKGROUND_COLOR,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -38,7 +33,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: CColors.TEXTO_COLOR,
+                      color: CColors.BACKGROUND_COLOR,
                     ),
                   )
                 ],
@@ -66,7 +61,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                 Text(
                   title.toString(),
                   style: TextStyle(
-                    color: CColors.TEXTO_COLOR,
+                    color: CColors.BACKGROUND_COLOR,
                     fontSize: 23,
                     fontWeight: FontWeight.bold,
                   ),
@@ -78,7 +73,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                   children: <Widget>[
                     Icon(
                       Icons.access_time,
-                      color: CColors.TEXTO_COLOR,
+                      color: CColors.BACKGROUND_COLOR,
                     ),
                     SizedBox(
                       width: 10,
@@ -86,7 +81,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                     Text(
                       hour.toString(),
                       style: TextStyle(
-                        color: CColors.TEXTO_COLOR,
+                        color: CColors.BACKGROUND_COLOR,
                       ),
                     )
                   ],
