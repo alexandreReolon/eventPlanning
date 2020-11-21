@@ -30,8 +30,9 @@ class _MenuBottomState extends State<MenuBottom> {
         child: currentPage,
         bucket: bucket,
       ),
-      backgroundColor: CColors.BACKGROUND_COLOR,
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xff01405F),
+        unselectedItemColor: CColors.TEXT_COLOR,
         currentIndex: currentTab,
         onTap: (int index) {
           setState(() {

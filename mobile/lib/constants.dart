@@ -7,6 +7,7 @@ class CColors {
   static const COLOR_SECUNDARY = Color(0xffef7377);
 
   static const BACKGROUND_COLOR = Color(0xff1E8CD0);
+  static const BACKGROUND_COLOR_DARK = Color(0xff035277);
 
   static const SUCESS_COLOR = Color.fromRGBO(34, 187, 51, 1);
 }

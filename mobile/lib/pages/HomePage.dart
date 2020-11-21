@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CColors.BACKGROUND_COLOR,
+      backgroundColor: CColors.BACKGROUND_COLOR_DARK,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                       child: CircleAvatar(
                         radius: 25,
                         backgroundColor: Colors.brown.shade800,
-                        child: Text('AH'),
+                        child: Text('Al'),
                       ))
                 ],
               ),
