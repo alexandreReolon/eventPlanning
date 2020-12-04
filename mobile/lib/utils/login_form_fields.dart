@@ -5,7 +5,7 @@ import 'package:flutter/painting.dart';
 Widget field(
     {double paddingTop, String text, TextEditingController controller}) {
   return Padding(
-    padding: EdgeInsets.only(top: paddingTop == null ? 30 : paddingTop),
+    padding: EdgeInsets.only(top: paddingTop == null ? 15 : paddingTop),
     child: Material(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -134,6 +134,32 @@ Widget cadastroButton({context, Function click}) {
         "Cadastrar-se",
         style: TextStyle(
           color: Colors.white,
+        ),
+      ),
+      onPressed: () {
+        click(context);
+      },
+    ),
+  );
+}
+
+Widget button({context, String text, Function click, Color cor}) {
+  cor = cor != null ? cor : CColors.BACKGROUND_COLOR;
+
+  return Container(
+    margin: EdgeInsets.only(bottom: 10),
+    width: MediaQuery.of(context).size.width,
+    height: 50,
+    child: RaisedButton(
+      elevation: 0,
+      highlightElevation: 10,
+      color: cor,
+      highlightColor: cor.withOpacity(0.7),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: CColors.TEXT_COLOR,
         ),
       ),
       onPressed: () {

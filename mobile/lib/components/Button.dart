@@ -7,13 +7,13 @@ Widget button({text}) {
     padding: EdgeInsets.all(15),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(50),
-      color: CColors.TERTIARY_COLOR,
+      color: CColors.COLOR_PRIMARY,
     ),
     child: Center(
       child: Text(
         text.toString().toUpperCase(),
         style: TextStyle(
-          color: CColors.PRIMARY_COLOR.withOpacity(.7),
+          color: CColors.COLOR_PRIMARY.withOpacity(.7),
         ),
       ),
     ),

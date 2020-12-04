@@ -72,7 +72,8 @@ class _MyAppState extends State<MyApp> {
     var android = new AndroidNotificationDetails('id', 'name', 'description');
     var plaftform = new NotificationDetails(android: android);
 
-    flutterLocalNotificationsPlugin.show(0, "title", "body", plaftform);
+    flutterLocalNotificationsPlugin.show(
+        0, "Apresentando", "mensagem de divulgação do evento", plaftform);
   }
 
   @override

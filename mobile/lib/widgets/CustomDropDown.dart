@@ -25,30 +25,26 @@ class CustomDropDown extends StatelessWidget {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              color: CColors.COLOR_SECUNDARY,
+              color: CColors.BACKGROUND_COLOR,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(
-                left: 30,
-                right: 30,
-                top: 5,
-                bottom: 5,
-              ),
+              padding:
+                  const EdgeInsets.only(left: 30, right: 30, top: 5, bottom: 5),
               child: DropdownButton<int>(
-                dropdownColor: CColors.COLOR_SECUNDARY,
+                dropdownColor: CColors.BACKGROUND_COLOR,
                 value: value,
                 hint: Text(
                   hint,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 18,
-                    color: CColors.COLOR_SECUNDARY,
+                    color: CColors.TEXT_COLOR,
                   ),
                 ),
                 style: TextStyle(
                   fontSize: 18,
-                  color: CColors.COLOR_SECUNDARY.withOpacity(.7),
+                  color: CColors.TEXT_COLOR,
                 ),
                 items: items,
                 isExpanded: true,

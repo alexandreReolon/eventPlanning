@@ -11,7 +11,7 @@ class EventList extends State {
     if (snapshot.connectionState == ConnectionState.waiting) {
       return Text("CAREGANDO");
     }
-
+    print(snapshot.data);
     if (snapshot.hasData) {
       return renderizarEventos(snapshot.data);
     } else {

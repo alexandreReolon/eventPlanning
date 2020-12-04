@@ -18,7 +18,11 @@ class _MenuBottomState extends State<MenuBottom> {
 
   @override
   void initState() {
-    pages = [HomePage(), CadastroEventoPage(), DashBoardPage()];
+    pages = [
+      HomePage(),
+      DashBoardPage(),
+      CadastroEventoPage(),
+    ];
     currentPage = pages[0];
 
     super.initState();
@@ -47,11 +51,11 @@ class _MenuBottomState extends State<MenuBottom> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.event_available),
-            title: Text("Cadastro Evento"),
+            title: Text("DashBoard"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.event_available),
-            title: Text("DashBoard"),
+            title: Text("Cadastro Evento"),
           ),
         ],
       ),

@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:eventPlanning/Service.dart' as Service;
 
 import 'package:eventPlanning/constants.dart';
+import 'package:eventPlanning/utils/login_form_fields.dart';
 import 'package:eventPlanning/widgets/CustomDropDown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -51,10 +52,8 @@ class _HomeState extends State<CadastroEventoPage> {
 
   @override
   Widget build(BuildContext context) {
-    final heightMedia = MediaQuery.of(context).copyWith().size.height / 3;
-
     return Scaffold(
-      backgroundColor: CColors.BACKGROUND_COLOR,
+      backgroundColor: CColors.BACKGROUND_COLOR_DARK,
       body: Form(
         key: cadastrarPageKey,
         child: SingleChildScrollView(
@@ -69,11 +68,12 @@ class _HomeState extends State<CadastroEventoPage> {
               FadeAnimation(
                 1.2,
                 Text(
-                  "Cadastro de Eventos",
+                  "Eventos",
                   style: TextStyle(
-                      fontSize: 40,
-                      color: CColors.COLOR_SECUNDARY,
-                      fontWeight: FontWeight.bold),
+                    fontSize: 40,
+                    color: CColors.TEXT_COLOR,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(
@@ -85,53 +85,18 @@ class _HomeState extends State<CadastroEventoPage> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: CColors.COLOR_SECUNDARY,
+                    color: Color(0xff01405F),
                   ),
                   child: Column(
                     children: <Widget>[
                       Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: CColors.COLOR_SECUNDARY,
-                            ),
-                          ),
-                        ),
-                        child: TextFormField(
-                          validator: (value) {
-                            return validador(value, false);
-                          },
-                          controller: nameInput,
-                          decoration: InputDecoration(
-                            hintText: "Digite o nome do evento",
-                            border: InputBorder.none,
-                            hintStyle: TextStyle(
-                              color: CColors.COLOR_SECUNDARY.withOpacity(.8),
-                            ),
-                          ),
-                        ),
+                        child: field(
+                            text: "Nome do Evento", controller: nameInput),
                       ),
                       Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: CColors.COLOR_SECUNDARY,
-                            ),
-                          ),
-                        ),
-                        child: TextFormField(
-                          validator: (value) {
-                            return validador(value, false);
-                          },
-                          controller: mensagemInput,
-                          decoration: InputDecoration(
-                            hintText: "Digite uma mensagem de divulgação",
-                            border: InputBorder.none,
-                            hintStyle: TextStyle(
-                              color: CColors.COLOR_SECUNDARY.withOpacity(.8),
-                            ),
-                          ),
-                        ),
+                        child: field(
+                            text: "Mensagem para o Evento",
+                            controller: mensagemInput),
                       ),
                       SizedBox(
                         height: 20,
@@ -155,64 +120,12 @@ class _HomeState extends State<CadastroEventoPage> {
                               beacons = value;
                             });
                           }),
-                      Center(
-                        child: InkWell(
-                          child: Container(
-                            width: 200,
-                            padding: EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: CColors.COLOR_SECUNDARY,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "SELECIONAR DATA",
-                                style: TextStyle(
-                                  color:
-                                      CColors.COLOR_SECUNDARY.withOpacity(.7),
-                                ),
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            showModalBottomSheet(
-                                context: context,
-                                builder: (BuildContext builder) {
-                                  return Container(
-                                    child: cupertinoDate(),
-                                    height: heightMedia,
-                                  );
-                                });
-                          },
-                        ),
-                      ),
+                      button(context: context, text: "Data", click: clickDia),
                       SizedBox(
                         height: 10,
                       ),
-                      Center(
-                        child: InkWell(
-                          child: Container(
-                            width: 200,
-                            padding: EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: CColors.COLOR_SECUNDARY,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "ADICIONAR IMAGEM",
-                                style: TextStyle(
-                                  color:
-                                      CColors.COLOR_SECUNDARY.withOpacity(.7),
-                                ),
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            _loadImage(ImageSource.gallery);
-                          },
-                        ),
-                      )
+                      button(
+                          context: context, text: "Imagem", click: clickImagem),
                     ],
                   ),
                 ),
@@ -221,31 +134,12 @@ class _HomeState extends State<CadastroEventoPage> {
                 height: 40,
               ),
               FadeAnimation(
-                1.8,
-                Center(
-                  child: InkWell(
-                    onTap: () {
-                      this.clickSalvar();
-                    },
-                    child: Container(
-                      width: 120,
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: CColors.SUCESS_COLOR.withOpacity(.7),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "SALVAR",
-                          style: TextStyle(
-                            color: CColors.COLOR_SECUNDARY.withOpacity(.7),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+                  1.8,
+                  button(
+                      context: context,
+                      text: "Salvar",
+                      click: clickSalvar,
+                      cor: CColors.COLOR_PRIMARY)),
             ],
           ),
         ),
@@ -253,7 +147,24 @@ class _HomeState extends State<CadastroEventoPage> {
     );
   }
 
-  clickSalvar() {
+  clickImagem(context) {
+    _loadImage(ImageSource.gallery);
+  }
+
+  clickDia(context) {
+    final heightMedia = MediaQuery.of(context).copyWith().size.height / 3;
+
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext builder) {
+          return Container(
+            child: cupertinoDate(),
+            height: heightMedia,
+          );
+        });
+  }
+
+  clickSalvar(context) {
     var parametros = {
       'titulo': nameInput.text.toString(),
       'dataInicio': dataInput.toString(),

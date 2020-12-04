@@ -25,7 +25,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          double paddingTop = 50;
+          double paddingTop = 20;
 
           if (constraints.constrainHeight() <= 300) {
             paddingTop = 5;

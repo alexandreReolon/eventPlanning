@@ -17,7 +17,7 @@ module.exports = function (app) {
 
         res.status(500);
         res.json({
-          "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO"
+          "message": "NÃO FOI POSSÍVEL ADQUIRIR O EVENTO"
         });
       } else {
         res.send(result);
@@ -48,7 +48,8 @@ module.exports = function (app) {
 
     conexao.query(query, [event.titulo, event.dataCadastro, event.dataInicio, event.imagem], (err, result) => {
       if (err || result.affectedRows <= 0) {
-        console.log(err);
+
+        console.log("ERR)" + err);
 
         res.status(500);
         res.json({

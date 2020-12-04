@@ -164,15 +164,12 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.only(left: 30, right: 30),
               child: Divider(height: 10, color: Colors.white),
             ),
-            Visibility(
-              visible: _selected,
-              child: Container(
-                child: FutureBuilder(
-                  future: eventos,
-                  builder: (context, snapshort) {
-                    return eventList.lista(context, snapshort);
-                  },
-                ),
+            Container(
+              child: FutureBuilder(
+                future: eventos,
+                builder: (context, snapshort) {
+                  return eventList.lista(context, snapshort);
+                },
               ),
             ),
           ],
