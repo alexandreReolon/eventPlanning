@@ -28,18 +28,7 @@ class _HomePageState extends State<HomePage> {
 
   getEventos() async {
     setState(() {
-      Service.get('eventoService/adquirirEventos/').then((value) async {
-        var event = value.map<Evento>((map) {
-          return Evento.fromJson(map);
-        }).toList();
-
-        print(event[0].title);
-
-        var completer = new Completer<List<Evento>>();
-        completer.complete(event);
-
-        eventos = completer.future;
-      });
+      eventos = Service.getEvento('eventoService/adquirirEventos/');
     });
   }
 

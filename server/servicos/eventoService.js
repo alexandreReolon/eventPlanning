@@ -9,7 +9,15 @@ module.exports = function (app) {
   app.get('/eventoService/adquirirEventos/', function (req, res) {
     logger.info("Executando o método ==> eventoService/adquirirEventos");
 
-    const query = "SELECT ID_EVENTO AS 'id', BL_IMAGEM AS IMAGE, TX_TITULO AS title, substring(monthname(dt_inicio), 1,3) as mes, HOUR(DT_INICIO) AS 'hour',  DAY(DT_INICIO) AS 'date' FROM TB_EVENTO ";
+    const query = "select " +
+      "ID_EVENTO as 'id', " +
+      "BL_IMAGEM as IMAGE," +
+      "TX_TITULO as title," +
+      "substring(monthname(dt_inicio), 1, 3) as mes," +
+      "concat(concat(hour(DT_INICIO), ':' ), minute(dt_inicio)) as 'hour'," +
+      "day(DT_INICIO) as 'date' " +
+      "from " +
+      "TB_EVENTO;";
 
     conexao.query(query, (err, result) => {
       if (err || result.affectedRows <= 0) {
@@ -48,7 +56,6 @@ module.exports = function (app) {
 
     conexao.query(query, [event.titulo, event.dataCadastro, event.dataInicio, event.imagem], (err, result) => {
       if (err || result.affectedRows <= 0) {
-
         console.log("ERR)" + err);
 
         res.status(500);
@@ -72,12 +79,12 @@ module.exports = function (app) {
               mensagem: parameters.mensagem
             }
 
-            console.log(notification);
 
             let queryNotificacao = 'INSERT INTO TB_BEACONNOTIFICATION (CD_BEACON, CD_EVENTO, TX_MENSAGEM) VALUES (?, ?, ?);'
             conexao.query(queryNotificacao, [notification.beacon, notification.evento, notification.mensagem], (err, result) => {
-              console.log(err);
+
               if (err || result.affectedRows <= 0) {
+                console.log(err);
                 res.status(500);
                 res.json({
                   "message": "NÃO FOI POSSÍVEL SALVAR O EVENTO"

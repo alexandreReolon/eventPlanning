@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:async';
+import 'package:eventPlanning/modelos/Evento.dart';
 import 'package:http/http.dart' as http;
 import 'package:toast/toast.dart';
 
-const BASE_URL = "http://192.168.1.107:8080/";
+const BASE_URL = "http://192.168.1.104:8080/";
 const HEADERS = {'Content-type': 'application/json'};
 const STATUS_CODE_SUCESS = 200;
 
@@ -14,6 +15,20 @@ Future<List<dynamic>> get(String url) async {
 
   if (response.statusCode == STATUS_CODE_SUCESS) {
     return body.toList();
+  }
+}
+
+Future<List<Evento>> getEvento(String url) async {
+  http.Response response = await http.get(BASE_URL + url, headers: HEADERS);
+
+  var body = json.decode(response.body);
+
+  if (response.statusCode == STATUS_CODE_SUCESS) {
+    List<Evento> retorno = body.map<Evento>((map) {
+      return Evento.fromJson(map);
+    }).toList();
+
+    return retorno;
   }
 }
 

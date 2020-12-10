@@ -4,12 +4,14 @@ import 'dart:ui';
 import 'package:eventPlanning/Service.dart' as Service;
 
 import 'package:eventPlanning/constants.dart';
+import 'package:eventPlanning/pages/MenuBottom.dart';
 import 'package:eventPlanning/utils/login_form_fields.dart';
 import 'package:eventPlanning/widgets/CustomDropDown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/animations/FadeAnimation.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:string_validator/string_validator.dart';
 
 class CadastroEventoPage extends StatefulWidget {
@@ -177,7 +179,15 @@ class _HomeState extends State<CadastroEventoPage> {
 
     Service.post('eventoService/salvarEventos/', parametros, context)
         .then((value) async {
-      print(value);
+      if (value != null) {
+        Navigator.push(
+          context,
+          PageTransition(
+            type: PageTransitionType.fade,
+            child: MenuBottom(),
+          ),
+        );
+      }
     });
   }
 

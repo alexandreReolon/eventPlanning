@@ -16,14 +16,14 @@ Widget cardEvent({image, title, mes, date, hour}) {
               padding: EdgeInsets.only(top: 5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: CColors.BACKGROUND_COLOR,
+                color: Color(0xff01405F),
               ),
               child: Column(
                 children: [
                   Text(
                     date.toString(),
                     style: TextStyle(
-                      color: CColors.BACKGROUND_COLOR,
+                      color: CColors.TEXT_COLOR,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -33,7 +33,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: CColors.BACKGROUND_COLOR,
+                      color: CColors.TEXT_COLOR,
                     ),
                   )
                 ],
@@ -44,7 +44,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
       ),
       Expanded(
         child: Container(
-          height: 110,
+          height: 130,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
@@ -61,7 +61,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                 Text(
                   title.toString(),
                   style: TextStyle(
-                    color: CColors.BACKGROUND_COLOR,
+                    color: CColors.TEXT_COLOR,
                     fontSize: 23,
                     fontWeight: FontWeight.bold,
                   ),
@@ -73,7 +73,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                   children: <Widget>[
                     Icon(
                       Icons.access_time,
-                      color: CColors.BACKGROUND_COLOR,
+                      color: CColors.TEXT_COLOR,
                     ),
                     SizedBox(
                       width: 10,
@@ -81,7 +81,7 @@ Widget cardEvent({image, title, mes, date, hour}) {
                     Text(
                       hour.toString(),
                       style: TextStyle(
-                        color: CColors.BACKGROUND_COLOR,
+                        color: CColors.TEXT_COLOR,
                       ),
                     )
                   ],

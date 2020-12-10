@@ -1,0 +1,11 @@
+{
+    "editor.wordWrap": "on",
+    "extensions.confirmedUriHandlerExtensionIds": [
+    
+    ],
+
+    "workbench.colorCustomizations" : {
+        "terminal.foreground":"#f7f7f7",
+        "terminal.ansiBrightWhite":"#03f872",
+    }
+}
