@@ -1,6 +1,6 @@
 var app = require('./config/custom-express')();
 var connection = require('./persistencia/connection');
-var tables = require('./persistencia/Tabelas');
+var tables = require('./persistencia/tabelas');
 
 
 //Conectando na base de dados

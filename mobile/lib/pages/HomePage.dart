@@ -6,7 +6,7 @@ import 'package:eventPlanning/pages/PerfilPage.dart';
 import 'package:eventPlanning/utils/EventList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:eventPlanning/Service.dart' as Service;
+import 'package:eventPlanning/service.dart' as Service;
 import 'package:page_transition/page_transition.dart';
 
 class HomePage extends StatefulWidget {

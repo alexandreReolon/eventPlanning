@@ -3,7 +3,7 @@ import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/utils/login_form_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:eventPlanning/Service.dart' as Service;
+import 'package:eventPlanning/service.dart' as Service;
 
 class CadastrarPage extends StatefulWidget {
   CadastrarPage({Key key}) : super(key: key);

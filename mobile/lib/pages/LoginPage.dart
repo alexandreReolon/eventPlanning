@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:eventPlanning/Service.dart' as Service;
+import 'package:eventPlanning/service.dart' as Service;
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);

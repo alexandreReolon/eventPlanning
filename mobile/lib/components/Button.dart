@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:eventPlanning/Constants.dart';
+import 'package:eventPlanning/constants.dart';
 
 Widget button({text}) {
   return Container(

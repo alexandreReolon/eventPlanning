@@ -67,12 +67,12 @@ class Tabelas {
     cargasBeacon() {
         const tabela = "tb_beacon (nr_uuid, tx_descricao) ";
         let dados = " SELECT 'fda50693-a4e2-4fb1-afcf-c6eb07647825' AS nr_uuid, 'BEACON AZUL' AS tx_descricao ";
-        let condicao = " SELECT 1 FROM TB_BEACON WHERE TX_DESCRICAO LIKE 'BEACON AZUL'";
+        let condicao = " SELECT 1 FROM tb_beacon WHERE TX_DESCRICAO LIKE 'BEACON AZUL'";
         this.executarCarga(tabela, dados, condicao, "cargasBeacon");
 
 
         dados = "SELECT 'fda50693-a4e2-4fb1-afcf-c6eb0764782' AS nr_uuid, 'BEACON BRANCO' AS tx_descricao ";
-        condicao = "SELECT 1 FROM TB_BEACON WHERE TX_DESCRICAO LIKE 'BEACON BRANCO' ";
+        condicao = "SELECT 1 FROM tb_beacon WHERE TX_DESCRICAO LIKE 'BEACON BRANCO' ";
 
         this.executarCarga(tabela, dados, condicao, "cargasBeacon");
     }
@@ -83,7 +83,7 @@ class Tabelas {
             "tx_titulo varchar(255) NOT NULL," +
             "dt_cadastro timestamp NOT NULL  DEFAULT CURRENT_TIMESTAMP," +
             "dt_inicio timestamp NOT NULL  DEFAULT CURRENT_TIMESTAMP," +
-            "bl_imagem timestamp NOT NULL  DEFAULT CURRENT_TIMESTAMP," +
+            "bl_imagem varchar(255) NOT NULL  DEFAULT CURRENT_TIMESTAMP," +
 
             "CONSTRAINT PRIMARY KEY (id_evento) );";
 

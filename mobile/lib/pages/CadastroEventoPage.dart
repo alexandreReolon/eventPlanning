@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
-import 'package:eventPlanning/Service.dart' as Service;
+import 'package:eventPlanning/service.dart' as Service;
 
 import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/pages/MenuBottom.dart';

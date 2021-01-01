@@ -1,5 +1,5 @@
 import 'package:eventPlanning/animations/FadeAnimation.dart';
-import 'package:eventPlanning/components/CardEvent.dart';
+import 'package:eventPlanning/components/cardEvent.dart';
 import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/modelos/Evento.dart';
 import 'package:flare_flutter/flare_actor.dart';
