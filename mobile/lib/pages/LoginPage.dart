@@ -125,7 +125,8 @@ class _LoginPageState extends State<LoginPage> {
         .then((value) async {
       if (value != null) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        // await prefs.setString('user', value);
+        await prefs.setString('usuario', value);
+
         Navigator.push(
           context,
           PageTransition(
