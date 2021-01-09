@@ -175,8 +175,6 @@ class _HomeState extends State<CadastroEventoPage> {
       'beacon': beacons,
     };
 
-    print(parametros);
-
     Service.post('eventoService/salvarEventos/', parametros, context)
         .then((value) async {
       if (value != null) {

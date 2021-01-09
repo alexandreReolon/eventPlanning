@@ -16,3 +16,8 @@ class CBeacon {
   static const int AZUL = 1;
   static const int BRANCO = 2;
 }
+
+class CTipoUsuario {
+  static const int ADMINISTRADOR = 1;
+  static const int USUARIO_NORMAL = 2;
+}
