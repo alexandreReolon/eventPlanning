@@ -18,26 +18,38 @@ module.exports = function (app) {
       return false;
     }
 
-    try {
-      conexao.query('SELECT ID_USUARIO FROM TB_USUARIO WHERE TX_EMAIL = "' + parameters.email + '" AND TX_SENHA = "' + parameters.password + '"', function (err, result) {
-        if (err) throw err;
+    const query = 'SELECT ID_USUARIO, CD_TIPOUSUARIO FROM tb_usuario WHERE TX_EMAIL = "' + parameters.email + '" AND TX_SENHA = "' + parameters.password + '"';
 
-        if (!isEmpty(result[0]) && result[0].ID_USUARIO > 0) {
-          res.send(result[0].ID_USUARIO.toString());
-          res.end();
-
-        } else {
-          res.status(500);
-          res.send('EMAIL OU SENHA NÃO CONFEREM, VERIFIQUE E TENTE NOVAMENTE!');
-          res.end();
-        }
-      });
-
-    } catch (e) {
-      console.log(e)
+    const falha = function () {
       res.status(500);
       res.send('EMAIL OU SENHA NÃO CONFEREM, VERIFIQUE E TENTE NOVAMENTE!');
       res.end();
+    }
+
+    const retorno = function (err, result) {
+      if (err) throw err;
+
+      if (!isEmpty(result[0])) {
+
+        var parametros = {
+          'codigoUsuario': result[0].ID_USUARIO,
+          'codigoTipoUsuario': result[0].CD_TIPOUSUARIO
+        }
+
+        res.send(JSON.stringify(parametros));
+        res.end();
+
+      } else {
+        falha();
+      }
+    }
+
+    try {
+      conexao.query(query, retorno);
+
+    } catch (e) {
+      console.log(e)
+      falha();
     }
 
   });
@@ -50,7 +62,8 @@ module.exports = function (app) {
       'tx_nome': parameters.name,
       'tx_email': parameters.email,
       'tx_senha': parameters.password,
-      'dt_cadastro': new Date()
+      'dt_cadastro': new Date(),
+      'codigoTipoUsuario': 2,
     };
 
 
@@ -60,14 +73,16 @@ module.exports = function (app) {
       return false;
     }
 
-    const query = 'INSERT INTO TB_USUARIO (tx_nome, tx_email, tx_senha, dt_cadastro) VALUES (?, ?, ?, ?);';
+    const query = 'INSERT INTO tb_usuario (tx_nome, tx_email, tx_senha, dt_cadastro, cd_tipousuario) VALUES (?, ?, ?, ?, ?);';
 
-    conexao.query(query, [userModel.tx_nome, userModel.tx_email, userModel.tx_senha, userModel.dt_cadastro], function (error, result) {
+    const funcao = function (error, result) {
       if (error) throw error;
 
       res.status(200);
       res.send("");
-    });
+    }
+
+    conexao.query(query, [userModel.tx_nome, userModel.tx_email, userModel.tx_senha, userModel.dt_cadastro, userModel.codigoTipoUsuario], funcao);
   });
 
 }

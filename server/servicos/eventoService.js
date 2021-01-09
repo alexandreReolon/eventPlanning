@@ -17,7 +17,7 @@ module.exports = function (app) {
       "concat(concat(hour(DT_INICIO), ':' ), minute(dt_inicio)) as 'hour'," +
       "day(DT_INICIO) as 'date' " +
       "from " +
-      "TB_EVENTO;";
+      "tb_evento;";
 
     conexao.query(query, (err, result) => {
       if (err || result.affectedRows <= 0) {
@@ -52,7 +52,7 @@ module.exports = function (app) {
       dataInicio: new Date(parameters.dataInicio),
       imagem: parameters.imagem
     }
-    const query = 'INSERT INTO TB_EVENTO (tx_titulo, dt_cadastro, dt_inicio, bl_imagem) VALUES (?, ?, ?, ?);';
+    const query = 'INSERT INTO tb_evento (tx_titulo, dt_cadastro, dt_inicio, bl_imagem) VALUES (?, ?, ?, ?);';
 
     conexao.query(query, [event.titulo, event.dataCadastro, event.dataInicio, event.imagem], (err, result) => {
       if (err || result.affectedRows <= 0) {
@@ -80,7 +80,7 @@ module.exports = function (app) {
             }
 
 
-            let queryNotificacao = 'INSERT INTO TB_BEACONNOTIFICATION (CD_BEACON, CD_EVENTO, TX_MENSAGEM) VALUES (?, ?, ?);'
+            let queryNotificacao = 'INSERT INTO tb_beaconnotification (CD_BEACON, CD_EVENTO, TX_MENSAGEM) VALUES (?, ?, ?);'
             conexao.query(queryNotificacao, [notification.beacon, notification.evento, notification.mensagem], (err, result) => {
 
               if (err || result.affectedRows <= 0) {

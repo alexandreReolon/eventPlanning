@@ -7,7 +7,13 @@ class Tabelas {
 
         this.executarLinguagem();
 
+
+        this.criarTipoUsuario();
+        this.cargaTipoUsuario();
+
         this.criarUsuario();
+        this.cargaUsuarioAdministrador();
+
         this.criarBeacons();
         this.criarEvento();
         this.cargasBeacon();
@@ -47,8 +53,10 @@ class Tabelas {
             "tx_email varchar(255) NOT NULL UNIQUE," +
             "tx_senha varchar(50) NOT NULL," +
             "dt_cadastro timestamp NOT NULL  DEFAULT CURRENT_TIMESTAMP," +
+            "cd_tipousuario int not null, " +
 
-            "CONSTRAINT PRIMARY KEY (id_usuario) );";
+            "CONSTRAINT PRIMARY KEY (id_usuario), " +
+            "CONSTRAINT usuario_tipo_fk FOREIGN KEY (cd_tipousuario) REFERENCES tb_tipousuario (id_tipousuario) );"
 
         this.executarQuery(query, "tb_usuario");
     }
@@ -117,6 +125,38 @@ class Tabelas {
             "CONSTRAINT eventoaud_usuario_fk FOREIGN KEY (cd_usuario) REFERENCES tb_usuario (id_usuario));";
 
         this.executarQuery(query, "tb_eventoauditoria");
+    }
+
+    criarTipoUsuario() {
+        const query = "CREATE TABLE IF NOT EXISTS tb_tipousuario (" +
+            "id_tipousuario int  NOT NULL AUTO_INCREMENT UNIQUE," +
+            "tx_descricao varchar(255) NOT NULL," +
+
+            "CONSTRAINT PRIMARY KEY (id_tipousuario));";
+
+        this.executarQuery(query, "tb_tipousuario");
+    }
+
+    cargaTipoUsuario() {
+        const tabela = "tb_tipousuario (id_tipousuario, tx_descricao) ";
+        let dados = " SELECT 1 AS id_tipousuario, 'ADMINISTRADOR' AS tx_descricao ";
+        let condicao = " SELECT 1 FROM tb_tipousuario WHERE id_tipousuario = 1";
+        this.executarCarga(tabela, dados, condicao, "tb_tipousuario");
+
+
+        dados = " SELECT 2 AS id_tipousuario, 'USUÁRIO NORMAL' AS tx_descricao ";
+        condicao = " SELECT 1 FROM tb_tipousuario WHERE id_tipousuario = 2";
+
+        this.executarCarga(tabela, dados, condicao, "tb_tipousuario");
+    }
+
+    cargaUsuarioAdministrador() {
+        const tabela = "tb_usuario (id_usuario, tx_nome, tx_email,tx_senha,dt_cadastro,cd_tipousuario ) ";
+        let dados = " SELECT 1 AS id_usuario, 'ADMINISTRADOR' AS tx_nome, 'administrador@admin.com.br' as tx_email, 'admin123'  as tx_senha, now() as dt_cadastro, 1 as cd_tipousuario";
+
+
+        let condicao = " SELECT 1 FROM tb_usuario WHERE id_usuario = 1";
+        this.executarCarga(tabela, dados, condicao, "tb_usuario administrador");
     }
 
 
