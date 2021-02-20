@@ -4,7 +4,7 @@ const conexao = mysql.createConnection({
 	host: 'localhost',
 	database: 'event-planning',
 	user: 'root',
-	password: '',
+	password: 'root',
 	port: '3306'
 });
 
