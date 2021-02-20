@@ -2000,3 +2000,61 @@
 {"message":"::ffff:192.168.1.100 - - [05/Dec/2020:02:07:38 +0000] \"POST /eventoService/salvarEventos/ HTTP/1.1\" 200 27\n","level":"info"}
 {"message":"Executando o método ==> eventoService/adquirirEventos","level":"info"}
 {"message":"::ffff:192.168.1.100 - - [05/Dec/2020:02:07:38 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 204883\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/executarLinguagem","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario administrador","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_beacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_evento","level":"info"}
+{"message":"Executando o método ==> Tabelas/cargasBeacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/cargasBeacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_beaconnotification","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_eventoauditoria","level":"info"}
+{"code":"ER_BAD_FIELD_ERROR","errno":1054,"sqlMessage":"Unknown column 'cd_tipousuario' in 'field list'","sqlState":"42S22","index":0,"sql":"INSERT INTO tb_usuario (id_usuario, tx_nome, tx_email,tx_senha,dt_cadastro,cd_tipousuario )   SELECT\t* FROM ( SELECT 1 AS id_usuario, 'ADMINISTRADOR' AS tx_nome, 'administrador@admin.com.br' as tx_email, 'admin123'  as tx_senha, now() as dt_cadastro, 1 as cd_tipousuario) AS DADOS  WHERE NOT EXISTS ( SELECT 1 FROM tb_usuario WHERE id_usuario = 1);","level":"error"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/executarLinguagem","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario administrador","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_beacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_evento","level":"info"}
+{"message":"Executando o método ==> Tabelas/cargasBeacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/cargasBeacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_beaconnotification","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_eventoauditoria","level":"info"}
+{"code":"ER_BAD_FIELD_ERROR","errno":1054,"sqlMessage":"Unknown column 'cd_tipousuario' in 'field list'","sqlState":"42S22","index":0,"sql":"INSERT INTO tb_usuario (id_usuario, tx_nome, tx_email,tx_senha,dt_cadastro,cd_tipousuario )   SELECT\t* FROM ( SELECT 1 AS id_usuario, 'ADMINISTRADOR' AS tx_nome, 'administrador@admin.com.br' as tx_email, 'admin123'  as tx_senha, now() as dt_cadastro, 1 as cd_tipousuario) AS DADOS  WHERE NOT EXISTS ( SELECT 1 FROM tb_usuario WHERE id_usuario = 1);","level":"error"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/executarLinguagem","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario administrador","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_beacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_evento","level":"info"}
+{"message":"Executando o método ==> Tabelas/cargasBeacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/cargasBeacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_beaconnotification","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_eventoauditoria","level":"info"}
+{"message":"Executando o método ==> usuarioService/efetuarLogin","level":"info"}
+{"message":"::ffff:192.168.1.101 - - [19/Feb/2021:23:40:30 +0000] \"POST /usuarioService/efetuarLogin/ HTTP/1.1\" 200 41\n","level":"info"}
+{"message":"Executando o método ==> eventoService/adquirirEventos","level":"info"}
+{"message":"::ffff:192.168.1.101 - - [19/Feb/2021:23:43:47 +0000] \"GET /eventoService/adquirirEventos/ HTTP/1.1\" 200 2\n","level":"info"}
+{"message":"Verificando alterações em base","level":"info"}
+{"message":"Executando o método ==> Tabelas/executarLinguagem","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_tipousuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_usuario administrador","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_beacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_evento","level":"info"}
+{"message":"Executando o método ==> Tabelas/cargasBeacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/cargasBeacon","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_beaconnotification","level":"info"}
+{"message":"Executando o método ==> Tabelas/tb_eventoauditoria","level":"info"}
