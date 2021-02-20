@@ -1,4 +1,4 @@
 @echo off
 cls
 cd server
-nodemon app.js
+nodemon server.js
