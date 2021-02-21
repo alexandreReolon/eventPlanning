@@ -4,7 +4,7 @@ import 'package:eventPlanning/modelos/Evento.dart';
 import 'package:http/http.dart' as http;
 import 'package:toast/toast.dart';
 
-const BASE_URL = "http://192.168.1.104:8080/";
+const BASE_URL = "https://cydru.herokuapp.com/";
 const HEADERS = {'Content-type': 'application/json'};
 const STATUS_CODE_SUCESS = 200;
 

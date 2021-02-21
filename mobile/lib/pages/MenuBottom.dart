@@ -52,7 +52,14 @@ class MenuBottomState extends State<MenuBottom> {
       ),
     ];
 
-    var jsonString = jsonDecode(usuario);
+    pages.add(CadastroEventoPage());
+
+    items.add(BottomNavigationBarItem(
+      icon: Icon(Icons.event_available),
+      label: "Cadastro Evento",
+    ));
+
+    /* var jsonString = jsonDecode(usuario);
 
     Map<String, dynamic> user = jsonDecode(jsonString);
 
@@ -64,7 +71,7 @@ class MenuBottomState extends State<MenuBottom> {
         label: "Cadastro Evento",
       ));
     }
-
+*/
     currentPage = pages[0];
   }
 
@@ -80,7 +87,10 @@ class MenuBottomState extends State<MenuBottom> {
     regions.add(Region(identifier: 'fda50693-a4e2-4fb1-afcf-c6eb07647825'));
 
     flutterBeacon.ranging(regions).listen((RangingResult result) {
-      if (result != null && mounted && result.beacons != null) {
+      if (result != null &&
+          mounted &&
+          result.beacons != null &&
+          result.beacons.length > 0) {
         showNotification();
       }
     });
