@@ -2,6 +2,19 @@ image:
   file: Dockerfile
 ports:
   - port: 8080
-    onOpen: ignore
+    onOpen: open-preview
   - port: 3306
     onOpen: ignore
+tasks:
+  - before: >
+      source ~/.bashrc
+    init: |
+      echo "Installing...."
+      yes | sdk i java 8.0.232-open
+      sdk i kotlin
+      sdkmanager --update
+      yes | sdkmanager --licenses
+      flutter pub get
+      flutter run -d web-server --no-resident
+    command: >
+      echo "Completed!"
