@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:eventPlanning/constants.dart';
+import 'package:eventPlanning/pages/BeaconScan.dart';
 import 'package:eventPlanning/pages/EventoParticipante.dart';
 import 'package:eventPlanning/pages/HomePage.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +31,6 @@ class MenuBottomState extends State<MenuBottom> {
   void initState() {
     getUsuario();
 
-    initBeacons();
-    configurePush();
     configurePage();
     super.initState();
   }
@@ -56,65 +55,8 @@ class MenuBottomState extends State<MenuBottom> {
   getUsuario() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     usuario = prefs.getString('usuario');
-  }
 
-  Future<void> initBeacons() async {
-    await flutterBeacon.initializeAndCheckScanning;
-
-    final regions = <Region>[];
-    regions.add(Region(identifier: 'fda50693-a4e2-4fb1-afcf-c6eb07647825'));
-
-    flutterBeacon.ranging(regions).listen((RangingResult result) {
-      if (result != null &&
-          mounted &&
-          result.beacons != null &&
-          result.beacons.length > 0) {
-        clickMensagemDivulgacao(result.beacons[0].proximityUUID);
-      }
-    });
-  }
-
-  configurePush() {
-    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
-    var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
-    var initializationSettings = new InitializationSettings(android: android);
-
-    flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: onSelectNotification);
-  }
-
-  Future onSelectNotification(String load) {
-    showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-              title: new Text("TESTANDO PUSH"),
-              content: new Text('$load'),
-            ));
-  }
-
-  showNotification(Map<String, dynamic> map) {
-    var android = new AndroidNotificationDetails('id', 'name', 'description');
-    var plaftform = new NotificationDetails(android: android);
-
-    flutterLocalNotificationsPlugin.show(
-        int.parse(map['CODIGO']), map['TITULO'], map['MENSAGEM'], plaftform);
-  }
-
-  clickMensagemDivulgacao(proximityUUID) async {
-    var parametros = {
-      'proximityUUID': proximityUUID,
-    };
-
-    Service.post('notificacaoService/adquirirNotificacao/', parametros, null)
-        .then((value) async {
-      if (value != null) {
-        Map<String, dynamic> map = jsonDecode(value);
-
-        if (map != null && map['CODIGO'] != null) {
-          showNotification(map);
-        }
-      }
-    });
+    BeaconScan(usuario: usuario, context: context);
   }
 
   @override

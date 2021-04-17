@@ -1,6 +1,5 @@
 import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/models/Event.dart';
-import 'package:eventPlanning/widgets/card_event.dart';
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/service.dart' as Service;
 
@@ -39,7 +38,7 @@ class _EventoParticipante extends State<EventoParticipante> {
                 height: 10,
               ),
               itemBuilder: (context, index) {
-                return CardEvent(context: context);
+                return SizedBox(); //CardEvent(context: context);
               },
             );
           },

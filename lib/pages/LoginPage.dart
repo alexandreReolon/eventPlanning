@@ -10,12 +10,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:eventPlanning/service.dart' as Service;
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key key}) : super(key: key);
+  LoginPage({Key key, this.teste}) : super(key: key);
+  final int teste;
 
-  _LoginPageState createState() => _LoginPageState();
+  _LoginPageState createState() => _LoginPageState(teste);
 }
 
 class _LoginPageState extends State<LoginPage> {
+  int teste;
+
+  _LoginPageState(this.teste);
+
   final TextEditingController emailFieldController = TextEditingController();
   final TextEditingController passwordFieldController = TextEditingController();
 

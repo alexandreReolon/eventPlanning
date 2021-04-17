@@ -20,7 +20,7 @@ class CardView extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
-              height: 150,
+              height: 100,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(

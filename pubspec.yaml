@@ -33,6 +33,7 @@ dependencies:
   path_provider: ^1.6.9
   image_picker: ^0.6.7+14
   image: ^2.1.4
+  flutter_svg: ^0.19.2
 
   #BOTTOM NAVIGATOR
   provider: ^4.3.2+2
@@ -76,6 +77,8 @@ flutter:
     - assets/animations/flow.flr
     - assets/animations/calendario.flr
     - assets/images/event.jpg
+    - assets/images/review.svg
+    - assets/images/confirmed.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
