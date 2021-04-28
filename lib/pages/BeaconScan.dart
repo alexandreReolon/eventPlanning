@@ -46,7 +46,8 @@ class BeaconScan {
   Future onSelectNotification(String load) {
     showDialog(
         context: context,
-        builder: (_) => dialogEvent(map: map, context: context));
+        builder: (_) =>
+            dialogEvent(map: map, context: context, usuario: usuario));
   }
 
   showNotification() {
@@ -73,19 +74,6 @@ class BeaconScan {
           showNotification();
         }
       }
-    });
-  }
-
-  registerParticipation(map) {
-    if (map == null && map['CODIGO'] == null) {
-      return;
-    }
-
-    var parameters = {'codigoEvento': map['CODIGO'], 'codigoUsuario': usuario};
-
-    Service.post('eventoService/registrarParticipacao/', parameters, null)
-        .then((value) async {
-      if (value != null) {}
     });
   }
 }

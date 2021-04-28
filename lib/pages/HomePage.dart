@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:eventPlanning/animations/FadeAnimation.dart';
 import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/models/Event.dart';
+import 'package:eventPlanning/pages/favorite_view.dart';
 import 'package:eventPlanning/widgets/button_filter.dart';
 import 'package:eventPlanning/widgets/card_view.dart';
 import 'package:flare_flutter/flare_actor.dart';
@@ -44,6 +45,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               height: MediaQuery.of(context).padding.top,
             ),
             getToolbar(),
+            FavoriteListView(),
+            const SizedBox(
+              height: 16,
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(

@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:eventPlanning/service.dart' as Service;
 
-Widget dialogEvent({Map<String, dynamic> map, BuildContext context}) {
+Widget dialogEvent(
+    {Map<String, dynamic> map, BuildContext context, String usuario}) {
   return AlertDialog(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(20),
@@ -68,7 +72,7 @@ Widget dialogEvent({Map<String, dynamic> map, BuildContext context}) {
                         style: TextStyle(fontSize: 18),
                       ),
                       onPressed: () {
-                        // Navigator.of(context).pop();
+                        registerParticipation(map, usuario);
                       },
                     )
                   ],
@@ -92,4 +96,24 @@ Widget dialogEvent({Map<String, dynamic> map, BuildContext context}) {
       ],
     ),
   );
+}
+
+registerParticipation(map, usuario) {
+  Map<String, dynamic> dadosUsuario = jsonDecode(usuario);
+
+  var codigoUsuario = dadosUsuario['codigoUsuario'];
+
+  if (map == null || map['CODIGO'] == null || codigoUsuario == null) {
+    return;
+  }
+
+  var parameters = {
+    'codigoEvento': map['CODIGO'],
+    'codigoUsuario': codigoUsuario
+  };
+
+  Service.post('eventoService/registrarParticipacao/', parameters, null)
+      .then((value) async {
+    if (value != null) {}
+  });
 }

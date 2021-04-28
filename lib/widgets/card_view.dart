@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:eventPlanning/animations/FadeAnimation.dart';
 import 'package:eventPlanning/constants.dart';
@@ -43,26 +42,45 @@ class CardView extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.access_time,
-                          color: CColors.TEXT_COLOR,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          event.hour.toString(),
-                          style: TextStyle(
-                            color: CColors.TEXT_COLOR,
+                    Padding(
+                      padding: EdgeInsets.only(right: 18, bottom: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.access_time,
+                                  color: CColors.TEXT_COLOR,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  event.hour.toString(),
+                                  style: TextStyle(
+                                    color: CColors.TEXT_COLOR,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        )
-                      ],
-                    )
+                          Container(
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.red,
+                                  size: 25,
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

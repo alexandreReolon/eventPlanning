@@ -1,15 +1,10 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/pages/BeaconScan.dart';
 import 'package:eventPlanning/pages/EventoParticipante.dart';
 import 'package:eventPlanning/pages/HomePage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:eventPlanning/service.dart' as Service;
 
 String usuario;
 List<Widget> pages;
