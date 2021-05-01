@@ -4,14 +4,11 @@ import 'package:eventPlanning/animations/FadeAnimation.dart';
 import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/models/Event.dart';
 import 'package:eventPlanning/pages/favorite_view.dart';
-import 'package:eventPlanning/widgets/button_filter.dart';
 import 'package:eventPlanning/widgets/card_view.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/service.dart' as Service;
-
-int categoryType = Category.DIVERSOS;
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,7 +27,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   getData() async {
     setState(() {
-      eventos = Service.getEvento('eventoService/adquirirEventos/');
+      eventos = Service.getEvento(context);
     });
   }
 
@@ -55,7 +52,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   height: MediaQuery.of(context).size.height,
                   child: Column(
                     children: <Widget>[
-                      getCategory(),
                       Flexible(
                         child: getListEvent(),
                       ),
@@ -111,73 +107,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ],
       ),
     );
-  }
-
-  Widget getCategory() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0, left: 18, right: 16),
-          child: Text(
-            'Categorias',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 22,
-              letterSpacing: 0.27,
-              color: CColors.nearlyWhite,
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
-          child: Row(
-            children: <Widget>[
-              buttonFilter(
-                txt: "DIVERSOS",
-                valueField: Category.DIVERSOS,
-                value: categoryType,
-                onclick: clickButtonFilter,
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              buttonFilter(
-                txt: "TECNOLOGIA",
-                valueField: Category.TECNOLOGIA,
-                value: categoryType,
-                onclick: clickButtonFilter,
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              buttonFilter(
-                txt: "MUSICA",
-                valueField: Category.MUSICA,
-                value: categoryType,
-                onclick: clickButtonFilter,
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-      ],
-    );
-  }
-
-  clickButtonFilter(value) {
-    setState(() {
-      categoryType = value;
-
-      eventos = Service.getEvento('eventoService/adquirirEventos/');
-    });
   }
 
   Widget getListEvent() {

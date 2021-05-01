@@ -16,7 +16,7 @@ class _EventoParticipante extends State<EventoParticipante> {
   Widget build(BuildContext context) {
     getEventos() async {
       setState(() {
-        eventos = Service.getEvento('eventoService/adquirirEventos/');
+        eventos = Service.getEvento(context);
       });
     }
 

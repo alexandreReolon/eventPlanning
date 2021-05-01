@@ -1,28 +1,33 @@
 import 'package:eventPlanning/constants.dart';
+import 'package:eventPlanning/models/Event.dart';
 import 'package:flutter/material.dart';
+import 'package:eventPlanning/service.dart' as Service;
 
 class FavoriteListView extends StatefulWidget {
   const FavoriteListView({Key key, this.callBack}) : super(key: key);
 
   final Function callBack;
+
   @override
   _CategoryListViewState createState() => _CategoryListViewState();
 }
 
 class _CategoryListViewState extends State<FavoriteListView>
     with TickerProviderStateMixin {
+  Future<List<Event>> eventos;
   AnimationController animationController;
 
   @override
   void initState() {
     animationController = AnimationController(
-        duration: const Duration(milliseconds: 2000), vsync: this);
+        duration: Duration(milliseconds: 2000), vsync: this);
     super.initState();
   }
 
-  Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 50));
-    return true;
+  getData() async {
+    setState(() {
+      eventos = Service.getEventoFavorito(context: context, usuario: 0);
+    });
   }
 
   @override
@@ -33,46 +38,49 @@ class _CategoryListViewState extends State<FavoriteListView>
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 16, bottom: 16),
-      child: Container(
-        height: 100,
-        width: double.infinity,
-        child: FutureBuilder<bool>(
-          future: getData(),
-          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            if (!snapshot.hasData) {
-              return const SizedBox();
-            } else {
-              return ListView.builder(
-                padding: const EdgeInsets.only(
-                    top: 0, bottom: 0, right: 16, left: 16),
-                itemCount: 1, //Category.categoryList.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  final int count = true //Category.categoryList.length > 10
-                      ? 10
-                      : 10; // Category.categoryList.length;
-                  final Animation<double> animation =
-                      Tween<double>(begin: 0.0, end: 1.0).animate(
-                          CurvedAnimation(
-                              parent: animationController,
-                              curve: Interval((1 / count) * index, 1.0,
-                                  curve: Curves.fastOutSlowIn)));
-                  animationController.forward();
+    return Visibility(
+      visible: eventos != null,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16, bottom: 16),
+        child: Container(
+          height: 100,
+          width: double.infinity,
+          child: FutureBuilder(
+            future: getData(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (!snapshot.hasData) {
+                return const SizedBox();
+              } else {
+                var data = snapshot.data;
 
-                  return CategoryView(
-                    // category: Category.categoryList[index],
-                    animation: animation,
-                    animationController: animationController,
-                    callback: () {
-                      widget.callBack();
-                    },
-                  );
-                },
-              );
-            }
-          },
+                return ListView.builder(
+                  padding:
+                      EdgeInsets.only(top: 0, bottom: 0, right: 16, left: 16),
+                  itemCount: data.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    final int count = data.length ? 10 : data.length;
+                    final Animation<double> animation =
+                        Tween<double>(begin: 0.0, end: 1.0).animate(
+                            CurvedAnimation(
+                                parent: animationController,
+                                curve: Interval((1 / count) * index, 1.0,
+                                    curve: Curves.fastOutSlowIn)));
+                    animationController.forward();
+
+                    return CategoryView(
+                      // category: Category.categoryList[index],
+                      animation: animation,
+                      animationController: animationController,
+                      callback: () {
+                        widget.callBack();
+                      },
+                    );
+                  },
+                );
+              }
+            },
+          ),
         ),
       ),
     );
@@ -109,7 +117,7 @@ class CategoryView extends StatelessWidget {
                 callback();
               },
               child: SizedBox(
-                width: 250,
+                width: 200,
                 child: Stack(
                   children: <Widget>[
                     Container(
