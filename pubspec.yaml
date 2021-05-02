@@ -50,6 +50,15 @@ dependencies:
   #Push
   onesignal_flutter: ^2.6.3
 
+
+  #Favicon
+  flutter_launcher_icons: "^0.8.0"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+
   flutter:
     sdk: flutter
 
@@ -79,6 +88,8 @@ flutter:
     - assets/images/event.jpg
     - assets/images/review.svg
     - assets/images/confirmed.svg
+    - assets/icon/icon.png
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
