@@ -2,16 +2,10 @@ import 'package:eventPlanning/pages/LoginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-Object usuario;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  usuario = prefs.getString('usuario');
 
   runApp(MyApp());
 }

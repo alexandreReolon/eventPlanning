@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:eventPlanning/animations/FadeAnimation.dart';
 import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/pages/CadastrarPage.dart';
@@ -8,6 +10,8 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:eventPlanning/service.dart' as Service;
+import 'package:string_validator/string_validator.dart';
+import 'package:toast/toast.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.teste}) : super(key: key);
@@ -112,10 +116,26 @@ class _LoginPageState extends State<LoginPage> {
       'password': passwordFieldController.text.toString()
     };
 
+    if (isNull(parametros['email'])) {
+      toast(context: context, texto: "AVISO! O CAMPO EMAIL NÃO PODE SER VAZIO");
+      return false;
+    }
+
+    if (isEmail(parametros['email'])) {
+      toast(context: context, texto: "AVISO! INFORME UM EMAIL VÁLIDO");
+      return false;
+    }
+
+    if (isNull(parametros['password'])) {
+      toast(context: context, texto: "AVISO! O CAMPO SENHA NÃO PODE SER VAZIO");
+      return false;
+    }
+
     Service.post('usuarioService/efetuarLogin/', parametros, context)
         .then((value) async {
       if (value != null) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
+
         await prefs.setString('usuario', value);
 
         Navigator.push(
@@ -136,6 +156,16 @@ class _LoginPageState extends State<LoginPage> {
         type: PageTransitionType.fade,
         child: CadastrarPage(),
       ),
+    );
+  }
+
+  toast({String texto, context, bool error}) {
+    Toast.show(
+      texto.toString(),
+      context,
+      duration: 6,
+      gravity: Toast.TOP,
+      backgroundColor: CColors.red,
     );
   }
 }

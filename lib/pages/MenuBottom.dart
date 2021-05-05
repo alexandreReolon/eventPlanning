@@ -1,18 +1,20 @@
+import 'dart:convert';
+
 import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/pages/BeaconScan.dart';
 import 'package:eventPlanning/pages/EventoParticipante.dart';
 import 'package:eventPlanning/pages/HomePage.dart';
+import 'package:eventPlanning/pages/FeedbackPage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 String usuario;
 List<Widget> pages;
 Widget currentPage;
-int currentTab = 0;
+int currentTab;
 List<BottomNavigationBarItem> items;
 
-final PageStorageBucket bucket = PageStorageBucket();
+PageStorageBucket bucket = new PageStorageBucket();
 
 class MenuBottom extends StatefulWidget {
   @override
@@ -20,18 +22,21 @@ class MenuBottom extends StatefulWidget {
 }
 
 class MenuBottomState extends State<MenuBottom> {
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
-
   @override
   void initState() {
     getUsuario();
 
-    configurePage();
     super.initState();
   }
 
   configurePage() {
-    pages = [HomePage(), EventoParticipante()];
+    Map<String, dynamic> dadosUsuario = jsonDecode(usuario);
+
+    pages = [
+      HomePage(dadosUsuario: dadosUsuario),
+      EventoParticipante(dadosUsuario: dadosUsuario),
+      FeedbackPage(dadosUsuario: dadosUsuario),
+    ];
 
     items = <BottomNavigationBarItem>[
       BottomNavigationBarItem(
@@ -39,40 +44,53 @@ class MenuBottomState extends State<MenuBottom> {
         label: 'Eventos',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.event),
+        icon: Icon(Icons.event_available),
         label: 'Participando',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.feedback),
+        label: 'Pesquisa de satisfação',
       ),
     ];
 
     currentPage = pages[0];
+    currentTab = 0;
   }
 
   getUsuario() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    usuario = prefs.getString('usuario');
+
+    setState(() {
+      usuario = prefs.getString('usuario');
+    });
 
     BeaconScan(usuario: usuario, context: context);
+
+    configurePage();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageStorage(
-        child: currentPage,
-        bucket: bucket,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xff01405F),
-        unselectedItemColor: CColors.TEXT_COLOR,
-        currentIndex: currentTab,
-        onTap: (int index) {
-          setState(() {
-            currentTab = index;
-            currentPage = pages[index];
-          });
-        },
-        items: items,
-      ),
-    );
+    return usuario != null
+        ? Scaffold(
+            body: PageStorage(
+              child: currentPage,
+              bucket: bucket,
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: Color(0xff01405F),
+              unselectedItemColor: CColors.nearlyWhite,
+              selectedItemColor: CColors.COLOR_PRIMARY,
+              currentIndex: currentTab,
+              onTap: (int index) {
+                setState(() {
+                  currentTab = index;
+                  currentPage = pages[index];
+                });
+              },
+              items: items,
+            ),
+          )
+        : Container();
   }
 }

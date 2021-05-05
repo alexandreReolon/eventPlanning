@@ -38,7 +38,7 @@ Widget emailField({double paddingTop, TextEditingController controller}) {
     child: Material(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      child: TextField(
+      child: TextFormField(
         cursorColor: CColors.COLOR_PRIMARY,
         controller: controller,
         decoration: InputDecoration(
@@ -143,12 +143,12 @@ Widget cadastroButton({context, Function click}) {
   );
 }
 
-Widget button({context, String text, Function click, Color cor}) {
+Widget button({context, String text, Function click, Color cor, double width}) {
   cor = cor != null ? cor : CColors.BACKGROUND_COLOR;
 
   return Container(
     margin: EdgeInsets.only(bottom: 10),
-    width: MediaQuery.of(context).size.width,
+    width: width ?? MediaQuery.of(context).size.width,
     height: 50,
     child: RaisedButton(
       elevation: 0,

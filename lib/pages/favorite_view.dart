@@ -21,12 +21,15 @@ class _CategoryListViewState extends State<FavoriteListView>
   void initState() {
     animationController = AnimationController(
         duration: Duration(milliseconds: 2000), vsync: this);
+
     super.initState();
+
+    getData();
   }
 
   getData() async {
     setState(() {
-      eventos = Service.getEventoFavorito(context: context, usuario: 0);
+      eventos = Service.getEventoFavorito(context: context, usuario: 2);
     });
   }
 
@@ -38,49 +41,45 @@ class _CategoryListViewState extends State<FavoriteListView>
 
   @override
   Widget build(BuildContext context) {
-    return Visibility(
-      visible: eventos != null,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 16, bottom: 16),
-        child: Container(
-          height: 100,
-          width: double.infinity,
-          child: FutureBuilder(
-            future: getData(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (!snapshot.hasData) {
-                return const SizedBox();
-              } else {
-                var data = snapshot.data;
+    return Padding(
+      padding: const EdgeInsets.only(top: 16, bottom: 16),
+      child: Container(
+        height: 100,
+        width: double.infinity,
+        child: FutureBuilder(
+          future: eventos,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (!snapshot.hasData) {
+              return Container();
+            } else {
+              var data = snapshot.data;
+              return ListView.builder(
+                padding:
+                    EdgeInsets.only(top: 0, bottom: 0, right: 16, left: 16),
+                itemCount: data.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  final int count = data.length > 10 ? 10 : data.length;
+                  final Animation<double> animation =
+                      Tween<double>(begin: 0.0, end: 1.0).animate(
+                          CurvedAnimation(
+                              parent: animationController,
+                              curve: Interval((1 / count) * index, 1.0,
+                                  curve: Curves.fastOutSlowIn)));
+                  animationController.forward();
 
-                return ListView.builder(
-                  padding:
-                      EdgeInsets.only(top: 0, bottom: 0, right: 16, left: 16),
-                  itemCount: data.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    final int count = data.length ? 10 : data.length;
-                    final Animation<double> animation =
-                        Tween<double>(begin: 0.0, end: 1.0).animate(
-                            CurvedAnimation(
-                                parent: animationController,
-                                curve: Interval((1 / count) * index, 1.0,
-                                    curve: Curves.fastOutSlowIn)));
-                    animationController.forward();
-
-                    return CategoryView(
-                      // category: Category.categoryList[index],
-                      animation: animation,
-                      animationController: animationController,
-                      callback: () {
-                        widget.callBack();
-                      },
-                    );
-                  },
-                );
-              }
-            },
-          ),
+                  return CategoryView(
+                    // category: Category.categoryList[index],
+                    animation: animation,
+                    animationController: animationController,
+                    callback: () {
+                      widget.callBack();
+                    },
+                  );
+                },
+              );
+            }
+          },
         ),
       ),
     );

@@ -15,6 +15,8 @@ class CColors {
   static const Color darkerText = Color(0xFF17262A);
   static const Color nearlyWhite = Color(0xFFFFFFFF);
   static const Color nearlyBlue = Color(0xFF00B6F0);
+
+  static const Color red = Color(0xFFff0000);
 }
 
 class CBeacon {

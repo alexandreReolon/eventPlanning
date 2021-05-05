@@ -8,6 +8,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:eventPlanning/service.dart' as Service;
 
 Map<String, dynamic> map;
+bool buscarBeacon = true;
 
 class BeaconScan {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
@@ -28,8 +29,9 @@ class BeaconScan {
     flutterBeacon.ranging(regions).listen((RangingResult result) {
       if (result != null &&
           result.beacons != null &&
-          result.beacons.length > 0) {
-        clickMensagemDivulgacao(result.beacons[0].proximityUUID);
+          result.beacons.length > 0 &&
+          buscarBeacon) {
+        buscarNotificacao(result.beacons[0].proximityUUID);
       }
     });
   }
@@ -58,9 +60,19 @@ class BeaconScan {
         int.parse(map['CODIGO']), map['TITULO'], map['MENSAGEM'], plaftform);
   }
 
-  clickMensagemDivulgacao(proximityUUID) async {
+  buscarNotificacao(proximityUUID) async {
+    buscarBeacon = false;
+
+    Future.delayed(Duration(milliseconds: 120000), () {
+      buscarBeacon = true;
+    });
+
+    Map<String, dynamic> dadosUsuario = jsonDecode(usuario);
+    var codigoUsuario = dadosUsuario['codigoUsuario'];
+
     var parametros = {
       'proximityUUID': proximityUUID,
+      'codigoUsuario': codigoUsuario,
     };
 
     Service.post('notificacaoService/adquirirNotificacao/', parametros, null)

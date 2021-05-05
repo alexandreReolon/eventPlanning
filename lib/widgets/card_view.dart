@@ -63,17 +63,6 @@ class CardView extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.favorite_border,
-                                color: Colors.red,
-                                size: 25,
-                              ),
-                            ],
-                          ),
-                        )
                       ],
                     ),
                   ),

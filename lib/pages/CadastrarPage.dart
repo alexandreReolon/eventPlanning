@@ -4,6 +4,8 @@ import 'package:eventPlanning/utils/login_form_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:eventPlanning/service.dart' as Service;
+import 'package:string_validator/string_validator.dart';
+import 'package:toast/toast.dart';
 
 class CadastrarPage extends StatefulWidget {
   CadastrarPage({Key key}) : super(key: key);
@@ -25,12 +27,6 @@ class _CadastrarPageState extends State<CadastrarPage> {
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          double paddingTop = 20;
-
-          if (constraints.constrainHeight() <= 300) {
-            paddingTop = 5;
-          }
-
           return Stack(
             children: <Widget>[
               FlareActor(
@@ -60,7 +56,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
                               children: <Widget>[
                                 field(
                                   text: "Nome",
-                                  paddingTop: paddingTop,
+                                  paddingTop: 10,
                                   controller: nameInput,
                                 ),
                                 emailField(
@@ -72,8 +68,9 @@ class _CadastrarPageState extends State<CadastrarPage> {
                                   controller: passwordInput,
                                 ),
                                 cadastroButton(
-                                    context: context,
-                                    click: clickButtonCadastro)
+                                  context: context,
+                                  click: clickButtonCadastro,
+                                )
                               ],
                             ),
                           ),
@@ -120,11 +117,45 @@ class _CadastrarPageState extends State<CadastrarPage> {
       'password': passwordInput.text
     };
 
+    if (isNull(parametros['name'])) {
+      toast(context: context, texto: "AVISO! O CAMPO NOME NÃO PODE SER VAZIO");
+      return false;
+    }
+
+    if (isNull(parametros['email'])) {
+      toast(context: context, texto: "AVISO! O CAMPO EMAIL NÃO PODE SER VAZIO");
+      return false;
+    }
+
+    if (isEmail(parametros['email'])) {
+      toast(context: context, texto: "AVISO! INFORME UM EMAIL VÁLIDO");
+      return false;
+    }
+
+    if (isNull(parametros['password'])) {
+      toast(context: context, texto: "AVISO! O CAMPO SENHA NÃO PODE SER VAZIO");
+      return false;
+    }
+
     Service.post('usuarioService/cadastrarUsuario/', parametros, context)
         .then((value) async {
       if (value != null) {
+        toast(context: context, texto: "CADASTRADO COM SUCESSO", error: false);
         Navigator.pop(context);
       }
     });
+  }
+
+  toast({String texto, context, bool error}) {
+    var cor =
+        (error == null ? true : error) ? CColors.red : CColors.SUCESS_COLOR;
+
+    Toast.show(
+      texto.toString(),
+      context,
+      duration: 6,
+      gravity: Toast.TOP,
+      backgroundColor: cor,
+    );
   }
 }

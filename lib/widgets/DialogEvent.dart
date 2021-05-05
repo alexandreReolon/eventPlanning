@@ -72,7 +72,7 @@ Widget dialogEvent(
                         style: TextStyle(fontSize: 18),
                       ),
                       onPressed: () {
-                        registerParticipation(map, usuario);
+                        registerParticipation(map, usuario, context);
                       },
                     )
                   ],
@@ -98,7 +98,7 @@ Widget dialogEvent(
   );
 }
 
-registerParticipation(map, usuario) {
+registerParticipation(map, usuario, context) {
   Map<String, dynamic> dadosUsuario = jsonDecode(usuario);
 
   var codigoUsuario = dadosUsuario['codigoUsuario'];
@@ -114,6 +114,8 @@ registerParticipation(map, usuario) {
 
   Service.post('eventoService/registrarParticipacao/', parameters, null)
       .then((value) async {
-    if (value != null) {}
+    if (value != null) {
+        Navigator.of(context).pop();
+    }
   });
 }

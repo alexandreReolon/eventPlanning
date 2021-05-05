@@ -84,11 +84,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/animations/flow.flr
-    - assets/animations/calendario.flr
-    - assets/images/event.jpg
-    - assets/images/review.svg
-    - assets/images/confirmed.svg
+    - assets/animations/calendario.flr  
     - assets/icon/icon.png
+    - assets/images/feedback.png
     - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see

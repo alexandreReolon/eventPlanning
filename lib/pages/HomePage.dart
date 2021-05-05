@@ -1,34 +1,48 @@
 import 'dart:async';
+import 'dart:convert';
 
-import 'package:eventPlanning/animations/FadeAnimation.dart';
 import 'package:eventPlanning/constants.dart';
 import 'package:eventPlanning/models/Event.dart';
-import 'package:eventPlanning/pages/favorite_view.dart';
+import 'package:eventPlanning/widgets/Carregando.dart';
+import 'package:eventPlanning/widgets/NaoHaDados.dart';
 import 'package:eventPlanning/widgets/card_view.dart';
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eventPlanning/service.dart' as Service;
 
 class HomePage extends StatefulWidget {
+  final Map<String, dynamic> dadosUsuario;
+
+  HomePage({Key key, this.dadosUsuario}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Future<List<Event>> eventos;
+  AnimationController animationController;
+  Animation<double> animation;
 
   @override
   void initState() {
     getData();
 
+    animationController = AnimationController(
+        duration: Duration(milliseconds: 2000), vsync: this);
+
+    animation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: animationController,
+        curve: Interval((1 / 10) * 1, 1.0, curve: Curves.fastOutSlowIn)));
+    animationController.forward();
+
     super.initState();
   }
 
-  getData() async {
-    setState(() {
-      eventos = Service.getEvento(context);
-    });
+  @override
+  void dispose() {
+    animationController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -41,10 +55,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             SizedBox(
               height: MediaQuery.of(context).padding.top,
             ),
-            getToolbar(),
-            FavoriteListView(),
             const SizedBox(
               height: 16,
+            ),
+            getToolbar(),
+            const SizedBox(
+              height: 16,
+            ),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 25,
+                ),
+                Text(
+                  'Eventos disponíveis',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 22,
+                    letterSpacing: 0.27,
+                    color: CColors.nearlyWhite,
+                  ),
+                ),
+              ],
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -66,65 +99,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  Widget getToolbar() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0, left: 18, right: 18),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Bem vindo,',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    letterSpacing: 0.2,
-                    color: CColors.TEXT_COLOR,
-                  ),
-                ),
-                Text(
-                  'Alexandre',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    letterSpacing: 0.27,
-                    color: CColors.nearlyWhite,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: 60,
-            height: 60,
-            child: Image.asset('assets/images/event.jpg'),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget getListEvent() {
     return Padding(
       padding: EdgeInsets.only(top: 8.0, left: 18, right: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            'Eventos Disponíveis',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 22,
-              letterSpacing: 0.27,
-              color: CColors.nearlyWhite,
-            ),
-          ),
           Flexible(
               child: Padding(
             padding: EdgeInsets.only(top: 8),
@@ -132,11 +112,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               future: eventos,
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return renderizarCarregando();
+                  return carregando();
                 }
 
                 if (!snapshot.hasData || snapshot.data.isEmpty) {
-                  return renderizarNaoHaDados();
+                  return naoHaDados();
                 } else {
                   var data = snapshot.data;
 
@@ -150,12 +130,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                          onTap: () {
-                            print('Hello');
-                          },
-                          child: CardView(
-                            event: snapshot.data[index],
-                          ));
+                        onTap: () {
+                          print('Hello');
+                        },
+                        child: CardView(
+                          event: snapshot.data[index],
+                        ),
+                      );
                     },
                   );
                 }
@@ -167,35 +148,71 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  Widget renderizarNaoHaDados() {
-    return FadeAnimation(
-        1.8,
-        Container(
-          padding: EdgeInsets.only(left: 25, right: 25, top: 50),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                  height: 150,
-                  width: 150,
-                  child: FlareActor(
-                    "assets/animations/calendario.flr",
-                    animation: "calendario",
-                    fit: BoxFit.fill,
-                  )),
-              Text(
-                "Ops, Nenhum evento cadastrado, volte mais tarde.",
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: CColors.TEXT_COLOR,
+  Widget getToolbar() {
+    var nomeUsuario = widget.dadosUsuario['nomeUsuario'];
+
+    return AnimatedBuilder(
+      animation: animationController,
+      builder: (BuildContext context, Widget child) {
+        return FadeTransition(
+          opacity: animation,
+          child: Transform(
+            transform: Matrix4.translationValues(
+                100 * (1.0 - animation.value), 0.0, 0.0),
+            child: InkWell(
+              splashColor: Colors.transparent,
+              child: SizedBox(
+                height: 100,
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(top: 16, left: 15),
+                            child: Expanded(
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    'Bem vindo,',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 20,
+                                      letterSpacing: 0.2,
+                                      color: CColors.TEXT_COLOR,
+                                    ),
+                                  ),
+                                  Text(
+                                    '${nomeUsuario}',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25,
+                                      letterSpacing: 0.27,
+                                      color: CColors.nearlyWhite,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
-        ));
+        );
+      },
+    );
   }
 
-  Widget renderizarCarregando() {
-    return Container();
+  getData() async {
+    setState(() {
+      eventos = Service.getEvento(context);
+    });
   }
 }
