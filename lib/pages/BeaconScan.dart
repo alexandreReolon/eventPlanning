@@ -63,10 +63,6 @@ class BeaconScan {
   buscarNotificacao(proximityUUID) async {
     buscarBeacon = false;
 
-    Future.delayed(Duration(milliseconds: 120000), () {
-      buscarBeacon = true;
-    });
-
     Map<String, dynamic> dadosUsuario = jsonDecode(usuario);
     var codigoUsuario = dadosUsuario['codigoUsuario'];
 
@@ -84,6 +80,10 @@ class BeaconScan {
           map = dados;
 
           showNotification();
+
+          Future.delayed(Duration(milliseconds: 120000), () {
+            buscarBeacon = true;
+          });
         }
       }
     });

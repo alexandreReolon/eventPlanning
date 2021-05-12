@@ -55,6 +55,7 @@ class _EventoParticipante extends State<EventoParticipante>
             PainelHora(
               animation: animation,
               animationController: animationController,
+              usuario: widget.dadosUsuario,
             ),
             const SizedBox(
               height: 16,
@@ -110,7 +111,7 @@ class _EventoParticipante extends State<EventoParticipante>
               future: eventos,
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return carregando();
+                  return Carregando();
                 }
 
                 if (!snapshot.hasData || snapshot.data.isEmpty) {

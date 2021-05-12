@@ -49,7 +49,7 @@ class MenuBottomState extends State<MenuBottom> {
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.feedback),
-        label: 'Pesquisa de satisfação',
+        label: 'Pesquisa',
       ),
     ];
 

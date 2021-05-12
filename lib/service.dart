@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:toast/toast.dart';
 
 const BASE_URL = "https://eventplaning.herokuapp.com/";
-
 const HEADERS = {'Content-type': 'application/json'};
 const STATUS_CODE_SUCESS = 200;
 

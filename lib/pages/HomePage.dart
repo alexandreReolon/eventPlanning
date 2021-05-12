@@ -48,104 +48,90 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        backgroundColor: CColors.BACKGROUND_COLOR_DARK,
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).padding.top,
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            getToolbar(),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              children: [
-                const SizedBox(
-                  width: 25,
-                ),
-                Text(
-                  'Eventos disponíveis',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 22,
-                    letterSpacing: 0.27,
-                    color: CColors.nearlyWhite,
-                  ),
-                ),
-              ],
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  child: Column(
-                    children: <Widget>[
-                      Flexible(
-                        child: getListEvent(),
-                      ),
-                    ],
-                  ),
-                ),
+        child: Scaffold(
+            backgroundColor: CColors.BACKGROUND_COLOR_DARK,
+            body: Column(children: <Widget>[
+              SizedBox(
+                height: MediaQuery.of(context).padding.top,
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+              const SizedBox(
+                height: 16,
+              ),
+              getToolbar(),
+              const SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  Text(
+                    'Eventos disponíveis',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 22,
+                      letterSpacing: 0.27,
+                      color: CColors.nearlyWhite,
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                  child: SingleChildScrollView(
+                      child: Container(
+                          height: MediaQuery.of(context).size.height - 250,
+                          child: Column(children: <Widget>[
+                            Flexible(
+                              child: getListEvent(),
+                            ),
+                          ]))))
+            ])));
   }
 
   Widget getListEvent() {
     return Padding(
-      padding: EdgeInsets.only(top: 8.0, left: 18, right: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
+        padding: EdgeInsets.only(top: 8.0, left: 18, right: 16),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
+            Widget>[
           Flexible(
               child: Padding(
-            padding: EdgeInsets.only(top: 8),
-            child: FutureBuilder(
-              future: eventos,
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return carregando();
-                }
+                  padding: EdgeInsets.only(top: 8),
+                  child: FutureBuilder(
+                      future: eventos,
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Carregando();
+                        }
 
-                if (!snapshot.hasData || snapshot.data.isEmpty) {
-                  return naoHaDados();
-                } else {
-                  var data = snapshot.data;
+                        if (!snapshot.hasData || snapshot.data.isEmpty) {
+                          return naoHaDados();
+                        } else {
+                          var data = snapshot.data;
 
-                  return ListView.separated(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    physics: ScrollPhysics(),
-                    itemCount: data.length,
-                    separatorBuilder: (context, index) => Container(
-                      height: 10,
-                    ),
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          print('Hello');
-                        },
-                        child: CardView(
-                          event: snapshot.data[index],
-                        ),
-                      );
-                    },
-                  );
-                }
-              },
-            ),
-          ))
-        ],
-      ),
-    );
+                          return ListView.separated(
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              physics: ScrollPhysics(),
+                              itemCount: data.length,
+                              separatorBuilder: (context, index) => Container(
+                                    height: 10,
+                                  ),
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    print('Hello');
+                                  },
+                                  child: CardView(
+                                    event: snapshot.data[index],
+                                  ),
+                                );
+                              });
+                        }
+                      })))
+        ]));
   }
 
   Widget getToolbar() {
@@ -155,24 +141,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       animation: animationController,
       builder: (BuildContext context, Widget child) {
         return FadeTransition(
-          opacity: animation,
-          child: Transform(
-            transform: Matrix4.translationValues(
-                100 * (1.0 - animation.value), 0.0, 0.0),
-            child: InkWell(
-              splashColor: Colors.transparent,
-              child: SizedBox(
-                height: 100,
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(top: 16, left: 15),
-                            child: Expanded(
-                              child: Column(
-                                children: <Widget>[
+            opacity: animation,
+            child: Transform(
+                transform: Matrix4.translationValues(
+                    100 * (1.0 - animation.value), 0.0, 0.0),
+                child: InkWell(
+                    splashColor: Colors.transparent,
+                    child: SizedBox(
+                        height: 100,
+                        child: Stack(children: <Widget>[
+                          Container(
+                              child: Row(children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.only(top: 16, left: 15),
+                                child: Expanded(
+                                    child: Column(children: <Widget>[
                                   Text(
                                     'Bem vindo,',
                                     textAlign: TextAlign.left,
@@ -192,20 +175,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                       letterSpacing: 0.27,
                                       color: CColors.nearlyWhite,
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
+                                  )
+                                ])))
+                          ]))
+                        ])))));
       },
     );
   }

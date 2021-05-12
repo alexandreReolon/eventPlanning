@@ -4,12 +4,17 @@ import 'package:flutter/material.dart';
 class PainelHora extends StatelessWidget {
   final AnimationController animationController;
   final Animation animation;
+  final Map<String, dynamic> usuario;
 
-  const PainelHora({Key key, this.animationController, this.animation})
+  const PainelHora(
+      {Key key, this.animationController, this.animation, this.usuario})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String totalEvento = usuario['totalEvento'];
+    String totalHoras = usuario['tempoTotal'];
+
     return AnimatedBuilder(
       animation: animationController,
       builder: (BuildContext context, Widget child) {
@@ -44,7 +49,7 @@ class PainelHora extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          'Total de eventos já realizados',
+                          'Total de Horas',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -74,7 +79,7 @@ class PainelHora extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 4.0),
                               child: Text(
-                                'Total de eventos:',
+                                'Total de eventos: ' + totalEvento,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -110,7 +115,7 @@ class PainelHora extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 4.0),
                               child: Text(
-                                'Tempo total:',
+                                'Tempo total: ' + totalHoras,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
